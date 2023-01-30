@@ -19,7 +19,7 @@ namespace Pharmacy_Management.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignOut([Bind(Exclude = "TypeRole")] Users user)
+        public ActionResult SignIn(Users user)
         {
 
              if(DbContext.Employees.Where(e => e.Username == user.Username && e.Pwd == user.Password).Count() > 0)
