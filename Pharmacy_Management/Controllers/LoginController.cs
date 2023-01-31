@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -42,6 +43,63 @@ namespace Pharmacy_Management.Controllers
         {
             FormsAuthentication.SignOut();
             return Redirect(FormsAuthentication.LoginUrl);
+        }
+
+        public ActionResult RegistrationEmployee()
+        {
+            ViewBag.IdRole = new SelectList(DbContext.Roles, "IdRole", "TypeRole");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrationEmployee(Employees employee)
+        {
+            if (!ModelState.IsValid)
+            {
+                if (employee.FileImg != null)
+                {
+                    string Path = Server.MapPath("~/Content/Assets/Img/Employees/" + employee.FileImg.FileName);
+                    employee.FileImg.SaveAs(Path);
+                    employee.UrlImg = employee.FileImg.FileName;
+                    DbContext.Employees.Add(employee);
+                    DbContext.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                } else
+                {
+                    ViewBag.Error = "Alcuni campi non sono stati completati!";
+                    return View();
+                }
+            }
+            return View();
+        }
+
+        public ActionResult RegistrationCustomer()
+        {
+            ViewBag.IdRole = new SelectList(DbContext.Roles, "IdRole", "TypeRole");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrationCustomer(Customers customer)
+        {
+            if (!ModelState.IsValid)
+            {
+                if(customer.FileImg != null)
+                {
+                    string Path = Server.MapPath("~/Content/Assets/Img/Customers/" + customer.FileImg.FileName);
+                    customer.FileImg.SaveAs(Path);
+                    customer.UrlImg = customer.FileImg.FileName;
+                    DbContext.Customers.Add(customer);
+                    DbContext.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                } else
+                {
+                    ViewBag.Errore = "Alcuni campi non sono stati compilati!";
+                }
+            }
+            return View();
         }
     }
 }

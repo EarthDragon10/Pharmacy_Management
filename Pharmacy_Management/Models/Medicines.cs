@@ -5,6 +5,7 @@ namespace Pharmacy_Management.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class Medicines
     {
@@ -23,6 +24,10 @@ namespace Pharmacy_Management.Models
 
         [Required]
         public string DescriptionUse { get; set; }
+        public string UrlImg { get; set; }
+
+        [NotMapped()]
+        public HttpPostedFileBase FileImg { get; set; }
 
         public int IdSupplierCompanies { get; set; }
 

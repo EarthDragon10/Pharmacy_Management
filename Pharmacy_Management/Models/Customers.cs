@@ -5,6 +5,7 @@ namespace Pharmacy_Management.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class Customers
     {
@@ -37,6 +38,10 @@ namespace Pharmacy_Management.Models
         [Required]
         [StringLength(16)]
         public string CodFisc { get; set; }
+
+        public string UrlImg { get; set; }
+        [NotMapped()]
+        public HttpPostedFileBase FileImg { get; set; }
 
         public int IdRole { get; set; }
 
