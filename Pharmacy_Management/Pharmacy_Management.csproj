@@ -160,6 +160,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\Img\Icons\Arrow-down.png" />
+    <Content Include="Content\Assets\Img\Icons\Dashboardr.png" />
+    <Content Include="Content\Assets\Img\Icons\Inventory.png" />
+    <Content Include="Content\Assets\Img\Icons\Reports.png" />
+    <Content Include="Content\Assets\Img\Icons\User.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -176,6 +181,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Assets\Img\Logo\logo.svg" />
+    <Content Include="Content\Assets\Img\Logo\logo2.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

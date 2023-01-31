@@ -58,7 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FileImg, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FileImg, new { @class = "form-control", @type = "file", @accept = "image/jpg, image/jpeg, image/png"})
+                @Html.TextBoxFor(model => model.FileImg, new { @class = "form-control", @type = "file", @accept = "image/jpg, image/jpeg, image/png"})
                 @Html.ValidationMessageFor(model => model.UrlImg, "", new { @class = "text-danger" })
             </div>
         </div>

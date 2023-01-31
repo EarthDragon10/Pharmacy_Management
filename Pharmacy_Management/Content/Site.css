@@ -1,12 +1,29 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+ol, ul {
+    padding: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -20,11 +37,58 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 300px;
 }
 
-.navbar-inverse .navbar-toggle:hover,
-.navbar-inverse .navbar-toggle:focus {
-    background-color: #777;
-    border-color: #fff
+/* SIDEBAR */
+
+.sidenav {
+    /*  position: fixed; Fixed Sidebar (stay in place on scroll) */
+    /*  z-index: 1; Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #283342;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    color: #FFFFFF;
+    height: 100vh;
+    padding: 0;
 }
+
+
+/* SIDEBAR HEADER */
+
+.sidenav .sidenav-header {
+    background-color: #1D242E;
+    padding: 17px 0px;
+}
+
+.sidenav .sidenav-header .img-logo {
+    height: 50px;
+}
+
+/* SIDEBAR BODY */
+
+#sidenav-body {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 20px;
+    overflow-x: hidden;
+}
+
+    #sidenav-body ul {
+        width: 100%;
+    }
+
+    #sidenav-body ul li {
+        height: 46px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        #sidenav-body ul li:hover {
+            background-color: #374251;
+        }
