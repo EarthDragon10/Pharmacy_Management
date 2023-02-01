@@ -40,6 +40,27 @@ textarea {
     max-width: 300px;
 }
 
+/* LOGIN/REGISTRATION */
+
+.bg-login {
+    background-color: #283342;
+}
+
+.login-spacing {
+    height: 100vh;
+    padding: 30px;
+}
+
+.login-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 4px 4px;
+    background-color: #E6EBF7;
+    height: 92vh;
+}
 /* SIDEBAR */
 
 .sidenav {
