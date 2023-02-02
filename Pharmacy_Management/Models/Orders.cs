@@ -27,5 +27,7 @@ namespace Pharmacy_Management.Models
         public virtual Medicines Medicines { get; set; }
 
         public virtual Pescritions Pescritions { get; set; }
+
+        public static int StaticIdCustomer { get; set; }
     }
 }

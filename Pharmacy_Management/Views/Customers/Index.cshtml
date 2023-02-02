@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Seleziona il Cliente presente nella lista</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -60,11 +57,15 @@
             @Html.DisplayFor(modelItem => item.UrlImg)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCustomer }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCustomer }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCustomer })
+            @Html.ActionLink("Seleziona", "Index", "Medicines", new { id=item.IdCustomer }, null)           
         </td>
     </tr>
 }
 
 </table>
+
+<h2>Inserimento Nuovo cliente</h2>
+
+<p>
+    @Html.ActionLink("Aggiungi Cliente", "Create")
+</p>

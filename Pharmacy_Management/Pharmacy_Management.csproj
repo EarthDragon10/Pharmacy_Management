@@ -309,6 +309,11 @@
     <Content Include="Views\SupplierCompanies\Details.cshtml" />
     <Content Include="Views\SupplierCompanies\Edit.cshtml" />
     <Content Include="Views\SupplierCompanies\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\InventaryPartialView.cshtml" />
+    <Content Include="Views\Dashboard\PharmacyPartialView.cshtml" />
+    <Content Include="Views\Dashboard\CustomersPartialView.cshtml" />
+    <Content Include="Views\Dashboard\OrdersPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,7 +321,6 @@
     <Folder Include="Content\Assets\Img\Employees\" />
     <Folder Include="Content\Assets\Img\Medicines\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Inventary\" />
     <Folder Include="Views\ResultSearch\" />
   </ItemGroup>

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-around align-content-around align-items-center">
+
+        @{ 
+            Html.RenderAction("InventaryPartialView");
+            Html.RenderAction("PharmacyPartialView");
+            Html.RenderAction("CustomersPartialView");
+            Html.RenderAction("OrdersPartialView");
+        }
+    </div>
+</div>
+
