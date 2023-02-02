@@ -129,9 +129,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DrawersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventaryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MedicinesController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\PescritionsController.cs" />
+    <Compile Include="Controllers\ResultSearchController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\SupplierCompaniesController.cs" />
+    <Compile Include="Controllers\TypeMedicinesController.cs" />
+    <Compile Include="Controllers\TypeProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,6 +155,10 @@
     <Compile Include="Migrations\202301310909130_AddedFieldUrlImg.cs" />
     <Compile Include="Migrations\202301310909130_AddedFieldUrlImg.designer.cs">
       <DependentUpon>202301310909130_AddedFieldUrlImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302020955400_AddedStockMedicines.cs" />
+    <Compile Include="Migrations\202302020955400_AddedStockMedicines.designer.cs">
+      <DependentUpon>202302020955400_AddedStockMedicines.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
@@ -246,12 +263,62 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Login\RegistrationEmployee.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Medicines\Create.cshtml" />
+    <Content Include="Views\Medicines\Delete.cshtml" />
+    <Content Include="Views\Medicines\Details.cshtml" />
+    <Content Include="Views\Medicines\Edit.cshtml" />
+    <Content Include="Views\Medicines\Index.cshtml" />
+    <Content Include="Views\Pescritions\Create.cshtml" />
+    <Content Include="Views\Pescritions\Delete.cshtml" />
+    <Content Include="Views\Pescritions\Details.cshtml" />
+    <Content Include="Views\Pescritions\Edit.cshtml" />
+    <Content Include="Views\Pescritions\Index.cshtml" />
+    <Content Include="Views\Drawers\Create.cshtml" />
+    <Content Include="Views\Drawers\Delete.cshtml" />
+    <Content Include="Views\Drawers\Details.cshtml" />
+    <Content Include="Views\Drawers\Edit.cshtml" />
+    <Content Include="Views\Drawers\Index.cshtml" />
+    <Content Include="Views\TypeMedicines\Create.cshtml" />
+    <Content Include="Views\TypeMedicines\Delete.cshtml" />
+    <Content Include="Views\TypeMedicines\Details.cshtml" />
+    <Content Include="Views\TypeMedicines\Edit.cshtml" />
+    <Content Include="Views\TypeMedicines\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\TypeProducts\Create.cshtml" />
+    <Content Include="Views\TypeProducts\Delete.cshtml" />
+    <Content Include="Views\TypeProducts\Details.cshtml" />
+    <Content Include="Views\TypeProducts\Edit.cshtml" />
+    <Content Include="Views\TypeProducts\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\SupplierCompanies\Create.cshtml" />
+    <Content Include="Views\SupplierCompanies\Delete.cshtml" />
+    <Content Include="Views\SupplierCompanies\Details.cshtml" />
+    <Content Include="Views\SupplierCompanies\Edit.cshtml" />
+    <Content Include="Views\SupplierCompanies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Assets\Img\Customers\" />
     <Folder Include="Content\Assets\Img\Employees\" />
     <Folder Include="Content\Assets\Img\Medicines\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Dashboard\" />
+    <Folder Include="Views\Inventary\" />
+    <Folder Include="Views\ResultSearch\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -264,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301310909130_AddedFieldUrlImg.resx">
       <DependentUpon>202301310909130_AddedFieldUrlImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302020955400_AddedStockMedicines.resx">
+      <DependentUpon>202302020955400_AddedStockMedicines.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

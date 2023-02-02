@@ -1,0 +1,75 @@
+﻿@model Pharmacy_Management.Models.Medicines
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medicines</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Drawers.IdDrawer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drawers.IdDrawer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplierCompanies.NameCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupplierCompanies.NameCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeMedicine.DescTypeMedicine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeMedicine.DescTypeMedicine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeProduct.DescTypeProduct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeProduct.DescTypeProduct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionUse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionUse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdMedicine }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

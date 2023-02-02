@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Pharmacy_Management.Models.TypeProduct>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DescTypeProduct)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescTypeProduct)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdTypeProduct }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdTypeProduct }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdTypeProduct })
+        </td>
+    </tr>
+}
+
+</table>

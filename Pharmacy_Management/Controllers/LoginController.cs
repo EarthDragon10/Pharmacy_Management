@@ -55,7 +55,9 @@ namespace Pharmacy_Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RegistrationEmployee(Employees employee)
         {
-            if (!ModelState.IsValid)
+            //employee.Roles = DbContext.Roles.Where( role => role.IdRole == employee.IdRole ).FirstOrDefault();
+
+            if (ModelState.IsValid)
             {
                 if (employee.FileImg != null)
                 {
@@ -64,14 +66,15 @@ namespace Pharmacy_Management.Controllers
                     employee.UrlImg = employee.FileImg.FileName;
                     DbContext.Employees.Add(employee);
                     DbContext.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("SignIn");
                 } else
                 {
                     ViewBag.Error = "Alcuni campi non sono stati completati!";
                     return View();
                 }
             }
-            return View();
+            ViewBag.IdRole = new SelectList(DbContext.Roles, "IdRole", "TypeRole", employee.IdRole);
+            return View(employee);
         }
 
         public ActionResult RegistrationCustomer()

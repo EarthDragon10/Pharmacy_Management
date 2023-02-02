@@ -32,6 +32,7 @@ namespace Pharmacy_Management.Models
         public int IdSupplierCompanies { get; set; }
 
         public int IdDrawer { get; set; }
+        public int Stock { get; set; }
 
         public virtual Drawers Drawers { get; set; }
 

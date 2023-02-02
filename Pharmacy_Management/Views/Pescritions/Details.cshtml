@@ -1,0 +1,35 @@
+﻿@model Pharmacy_Management.Models.Pescritions
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pescritions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customers.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentifierPrescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdentifierPrescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPrescription }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
