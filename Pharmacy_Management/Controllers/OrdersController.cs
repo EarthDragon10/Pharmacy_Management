@@ -36,9 +36,67 @@ namespace Pharmacy_Management.Controllers
             return View(orders);
         }
 
-        // GET: Orders/Create
-        public ActionResult Create()
+        // CREAZIONE DELL'ORDINE TRAMITE CLIENTI E PRODOTTI
+
+        public ActionResult PreviewCustomers() // ./Customers/Index
         {
+            var customers = db.Customers.Include(c => c.Roles);
+            return View(customers.ToList());
+        }
+
+        public ActionResult ChoiceProduct(int id) // ./Medicines/Index
+        {
+            var medicines = db.Medicines.Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct);
+            var order = new Orders();
+            Orders.StaticIdCustomer = id;
+            //Orders.ListIdCustomer.Add(id);
+            return View(medicines.ToList());
+        }
+
+        // GET: Customers/Create
+        public ActionResult CreateCustomers()
+        {
+            ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole");
+            return View();
+        }
+
+        // POST: Customers/Create
+        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
+        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCustomers([Bind(Include = "IdCustomer,Username,FirstName,LastName,Pwd,CodFisc, IdRole")] Customers customers)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Customers.Add(customers);
+                db.SaveChanges();
+                return RedirectToAction("PreviewCustomers");
+            }
+
+            ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", customers.IdRole);
+            return View(customers);
+        }
+        // GET: Orders/Create
+        public ActionResult Create(int id)
+        {
+            Orders.StaticIdMedicine = id;
+            Orders.ListIdMedicine.Add(id);
+
+            foreach (var item in Orders.ListIdMedicine)
+            {
+                Orders.PreOrder NewPreOrder = new Orders.PreOrder();
+                var medicine = db.Medicines.Find(item);
+                var typeProduct = db.TypeProduct.Find(medicine.IdTypeProduct);
+
+                NewPreOrder.NameProduct = medicine.DescriptionUse;
+                NewPreOrder.DescriptionUse = medicine.DescriptionUse;
+                NewPreOrder.UrlImg = medicine.UrlImg;
+                NewPreOrder.TypeProduct = typeProduct.DescTypeProduct;
+                NewPreOrder.TypeMedicine = medicine.TypeMedicine.DescTypeMedicine;
+                Orders.PreOrder.PreOrderList.Add(NewPreOrder);
+            }
+
             ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username");
             ViewBag.IdMedicine = new SelectList(db.Medicines, "IdMedicine", "DescriptionUse");
             ViewBag.IdPrescription = new SelectList(db.Pescritions, "IdPrescription", "IdPrescription");
@@ -50,17 +108,26 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdOrder,IdCustomer,IdMedicine,Quantity,IdPrescription,DateOrder")] Orders orders)
+        public ActionResult Create([Bind(Include = "IdOrder, Quantity,IdPrescription")] Orders orders)
         {
+            orders.IdMedicine = Orders.StaticIdMedicine;
+            orders.IdCustomer = Orders.StaticIdCustomer;
+            orders.DateOrder = DateTime.Now;
+
             if (ModelState.IsValid)
             {
+                // Oltre ad effettuare l'ordine, aggiorno anche la quantitá del prodotto nell'inventario
+                var medicine = db.Medicines.Find(orders.IdMedicine);
+                medicine.Stock -= orders.Quantity;
+                db.Entry(medicine).State = System.Data.Entity.EntityState.Modified;
+
                 db.Orders.Add(orders);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Dashboard");
             }
 
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", orders.IdCustomer);
-            ViewBag.IdMedicine = new SelectList(db.Medicines, "IdMedicine", "DescriptionUse", orders.IdMedicine);
+            //ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", orders.IdCustomer);
+            //ViewBag.IdMedicine = new SelectList(db.Medicines, "IdMedicine", "DescriptionUse", orders.IdMedicine);
             ViewBag.IdPrescription = new SelectList(db.Pescritions, "IdPrescription", "IdPrescription", orders.IdPrescription);
             return View(orders);
         }

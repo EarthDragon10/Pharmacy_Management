@@ -15,11 +15,10 @@ namespace Pharmacy_Management.Controllers
         private ModelDbContext db = new ModelDbContext();
 
         // GET: Medicines
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
             var medicines = db.Medicines.Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct);
             var order = new Orders();
-            Orders.StaticIdCustomer = id;
             return View(medicines.ToList());
         }
 

@@ -29,5 +29,25 @@ namespace Pharmacy_Management.Models
         public virtual Pescritions Pescritions { get; set; }
 
         public static int StaticIdCustomer { get; set; }
+        public static int StaticIdMedicine { get; set; }
+
+        public static List<int> ListIdCustomer = new List<int>();
+        public static List<int> ListIdMedicine = new List<int>();
+
+        [NotMapped()]
+        public class PreOrder
+        {
+            public string NameProduct { get; set; }
+            public string TypeProduct { get; set; }
+            public string TypeMedicine { set; get; }
+            public string DescriptionUse { get; set; }
+            public string UrlImg { get; set; }
+
+            public int Quantity { get; set; }
+
+            public static List<PreOrder> PreOrderList = new List<PreOrder>();
+        }
+
+        //public static List<Medicines> ListMedicineCart = new List<Medicines>();
     }
 }

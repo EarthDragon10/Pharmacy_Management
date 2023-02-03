@@ -17,6 +17,8 @@ namespace Pharmacy_Management.Models
 
         [Key]
         public int IdMedicine { get; set; }
+        [StringLength(30)]
+        public string NameMedicine { get; set; }
 
         public int IdTypeProduct { get; set; }
 

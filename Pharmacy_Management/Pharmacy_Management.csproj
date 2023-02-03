@@ -160,6 +160,10 @@
     <Compile Include="Migrations\202302020955400_AddedStockMedicines.designer.cs">
       <DependentUpon>202302020955400_AddedStockMedicines.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302031619009_AddedNameMedicineField.cs" />
+    <Compile Include="Migrations\202302031619009_AddedNameMedicineField.designer.cs">
+      <DependentUpon>202302031619009_AddedNameMedicineField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\CustomRole.cs" />
@@ -314,6 +318,9 @@
     <Content Include="Views\Dashboard\PharmacyPartialView.cshtml" />
     <Content Include="Views\Dashboard\CustomersPartialView.cshtml" />
     <Content Include="Views\Dashboard\OrdersPartialView.cshtml" />
+    <Content Include="Views\Orders\PreviewCustomers.cshtml" />
+    <Content Include="Views\Orders\ChoiceProduct.cshtml" />
+    <Content Include="Views\Orders\CreateCustomers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202302020955400_AddedStockMedicines.resx">
       <DependentUpon>202302020955400_AddedStockMedicines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302031619009_AddedNameMedicineField.resx">
+      <DependentUpon>202302031619009_AddedNameMedicineField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
