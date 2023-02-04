@@ -38,6 +38,7 @@ namespace Pharmacy_Management.Models
         public class PreOrder
         {
             public string NameProduct { get; set; }
+            public int IdMedicine { get; set; }
             public string TypeProduct { get; set; }
             public string TypeMedicine { set; get; }
             public string DescriptionUse { get; set; }

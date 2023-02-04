@@ -8,82 +8,100 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
+
     <h4>Orders</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="d-flex flex-wrap gap-4 justify-content-around align-content-around">
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdPrescription, "IdPrescription", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdPrescription", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdPrescription, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @foreach (var item in Pharmacy_Management.Models.Orders.PreOrder.PreOrderList)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="~/Content/Assets/Img/Medicines/@item.UrlImg" class="card-img-top" alt="image of product">
+                <div class="card-body">
+                    <h5 class="card-title">@item.NameProduct</h5>
+                    <p class="card-text">Tipo prodotto: @item.TypeProduct</p>
+                    <p class="card-text">Tipo medicinale: @item.TypeMedicine</p>
+                    <p>Descrizione: @item.DescriptionUse</p>
+                    <p>Seleziona la quantitá desiderata:</p>
+                    <select name="QntyAddedToCart" class="form-control btn-primary numMedicineSelected">
+                        <option selected value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.Label(item.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        @Html.Editor(item.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label(item.TypeProduct, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        @Html.Editor(item.TypeProduct, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label(item.TypeMedicine, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        @Html.Editor(item.TypeMedicine, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label(item.DescriptionUse, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        @Html.Editor(item.DescriptionUse, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label(item.UrlImg, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-10">
+                        @Html.Editor(item.UrlImg, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.Editor(item.Quantity.ToString(), new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>*@
+        }
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdPrescription, "IdPrescription", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdPrescription", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdPrescription, "", new { @class = "text-danger" })
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Effettua Ordine" class="btn btn-success" />
             </div>
-        </div>*@
-
-    @foreach (var item in Pharmacy_Management.Models.Orders.PreOrder.PreOrderList)
-    {
-
-        <div class="form-group">
-            @Html.Label(item.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
-            <div class="col-md-10">
-                @Html.Editor(item.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label(item.TypeProduct, new { htmlAttributes = new { @class = "form-control" } })
-            <div class="col-md-10">
-                @Html.Editor(item.TypeProduct, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label(item.TypeMedicine, new { htmlAttributes = new { @class = "form-control" } })
-            <div class="col-md-10">
-                @Html.Editor(item.TypeMedicine, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label(item.DescriptionUse, new { htmlAttributes = new { @class = "form-control" } })
-            <div class="col-md-10">
-                @Html.Editor(item.DescriptionUse, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.Label(item.UrlImg, new { htmlAttributes = new { @class = "form-control" } })
-            <div class="col-md-10">
-                @Html.Editor(item.UrlImg, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-        <div class="form-group">
-            
-            <div class="col-md-10">
-                @Html.Editor(item.Quantity.ToString(), new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
-    }
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
-</div>
 }
 
 <div>
-   @Html.ActionLink("Ritorna alla lista prodotti", "ChoiceProduct", new { id = Pharmacy_Management.Models.Orders.StaticIdCustomer});
+    @Html.ActionLink("Ritorna alla lista prodotti", "ChoiceProduct", new { id = Pharmacy_Management.Models.Orders.StaticIdCustomer });
 </div>
 
 @section Scripts {

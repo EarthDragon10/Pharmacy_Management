@@ -81,7 +81,12 @@ namespace Pharmacy_Management.Controllers
         public ActionResult Create(int id)
         {
             Orders.StaticIdMedicine = id;
-            Orders.ListIdMedicine.Add(id);
+            if (Orders.ListIdMedicine.Contains(id) == false)
+            {
+                Orders.ListIdMedicine.Add(id);
+            }
+            
+            Orders.PreOrder.PreOrderList.Clear();
 
             foreach (var item in Orders.ListIdMedicine)
             {
@@ -89,6 +94,7 @@ namespace Pharmacy_Management.Controllers
                 var medicine = db.Medicines.Find(item);
                 var typeProduct = db.TypeProduct.Find(medicine.IdTypeProduct);
 
+                NewPreOrder.IdMedicine = item;
                 NewPreOrder.NameProduct = medicine.DescriptionUse;
                 NewPreOrder.DescriptionUse = medicine.DescriptionUse;
                 NewPreOrder.UrlImg = medicine.UrlImg;
@@ -108,28 +114,41 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdOrder, Quantity,IdPrescription")] Orders orders)
+        public ActionResult Create([Bind(Include = "IdOrder, Quantity,IdPrescription")] List<int> QntyAddedToCart)
         {
-            orders.IdMedicine = Orders.StaticIdMedicine;
-            orders.IdCustomer = Orders.StaticIdCustomer;
-            orders.DateOrder = DateTime.Now;
+            int countProduct = 0;
+            foreach (var medicineSelected in Orders.PreOrder.PreOrderList)
+            {
+                Orders order = new Orders();
+                order.IdMedicine = medicineSelected.IdMedicine;
+                order.IdCustomer = Orders.StaticIdCustomer;
+                order.DateOrder = DateTime.Now;
+                order.Quantity = QntyAddedToCart[countProduct];
+                countProduct++;
+
+                var medicine = db.Medicines.Find(order.IdMedicine);
+                medicine.Stock -= order.Quantity;
+                db.Entry(medicine).State = System.Data.Entity.EntityState.Modified;
+
+                db.Orders.Add(order);
+            }
+            countProduct= 0;
+            //orders.IdMedicine = Orders.StaticIdMedicine;
+            //orders.IdCustomer = Orders.StaticIdCustomer;
+            //orders.DateOrder = DateTime.Now;
 
             if (ModelState.IsValid)
             {
                 // Oltre ad effettuare l'ordine, aggiorno anche la quantitá del prodotto nell'inventario
-                var medicine = db.Medicines.Find(orders.IdMedicine);
-                medicine.Stock -= orders.Quantity;
-                db.Entry(medicine).State = System.Data.Entity.EntityState.Modified;
-
-                db.Orders.Add(orders);
+                
                 db.SaveChanges();
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Orders", "Index");
             }
 
             //ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", orders.IdCustomer);
             //ViewBag.IdMedicine = new SelectList(db.Medicines, "IdMedicine", "DescriptionUse", orders.IdMedicine);
-            ViewBag.IdPrescription = new SelectList(db.Pescritions, "IdPrescription", "IdPrescription", orders.IdPrescription);
-            return View(orders);
+            //ViewBag.IdPrescription = new SelectList(db.Pescritions, "IdPrescription", "IdPrescription", orders.IdPrescription);
+            return View();
         }
 
         // GET: Orders/Edit/5
