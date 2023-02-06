@@ -20,6 +20,7 @@ namespace Pharmacy_Management.Models
         public int? IdPrescription { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOrder { get; set; }
 
         public virtual Customers Customers { get; set; }

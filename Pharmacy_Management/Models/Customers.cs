@@ -52,5 +52,7 @@ namespace Pharmacy_Management.Models
         public virtual ICollection<Pescritions> Pescritions { get; set; }
 
         public virtual Roles Roles { get; set; }
+        [NotMapped()]
+        public List<Orders> ListOrders = new List<Orders>();
     }
 }

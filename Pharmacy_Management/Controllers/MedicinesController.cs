@@ -141,5 +141,31 @@ namespace Pharmacy_Management.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult GetMedicineByDate(DateTime DataSelected)
+        {
+            var orders = db.Orders.Where(o => o.DateOrder == DataSelected).Include(o => o.Medicines).ToList();
+            List<MedicinesByCodFiscJson> ListMedicineSearched = new List<MedicinesByCodFiscJson>();
+
+            if (orders != null)
+            {
+                foreach (var order in orders)
+                {
+                    MedicinesByCodFiscJson SingleMedicine = new MedicinesByCodFiscJson();
+                    SingleMedicine.IdMedicine = order.IdMedicine;
+                    SingleMedicine.NameMedicine = order.Medicines.NameMedicine;
+                    SingleMedicine.Quantity = order.Quantity;
+                    SingleMedicine.UrlImg = order.Medicines.UrlImg;
+                    SingleMedicine.DateOrder = order.DateOrder;
+
+                    ListMedicineSearched.Add(SingleMedicine);
+                }
+                return Json(ListMedicineSearched, JsonRequestBehavior.AllowGet);
+            } else
+            {
+                return Json("ERRORE", JsonRequestBehavior.AllowGet);
+            }
+            
+        }
     }
 }

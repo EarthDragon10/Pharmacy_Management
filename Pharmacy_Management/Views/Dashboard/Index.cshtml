@@ -5,14 +5,61 @@
 }
 
 <div class="container">
-    <div class="d-flex flex-wrap justify-content-around align-content-around align-items-center">
-
-        @{ 
-            Html.RenderAction("InventaryPartialView");
-            Html.RenderAction("PharmacyPartialView");
-            Html.RenderAction("CustomersPartialView");
-            Html.RenderAction("OrdersPartialView");
-        }
+    <div class="row">
+        <div class="d-flex">
+            <input class="form-control" id="InputSearch" name="InputCodFisc" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" name="InputCodFisc" id="BtnSearch">Search</button>
+        </div>
+    </div>
+    <div class="row">
+        <div id="resultSearchByCodFisc" class="d-flex flex-wrap justify-content-around align-content-around align-items-center"></div>
+    </div>
+    <div class="row">
+        <div class="d-flex flex-wrap justify-content-around align-content-around align-items-center">
+            @{
+                Html.RenderAction("InventaryPartialView");
+                Html.RenderAction("PharmacyPartialView");
+                Html.RenderAction("CustomersPartialView");
+                Html.RenderAction("OrdersPartialView");
+            }
+        </div>
     </div>
 </div>
 
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#BtnSearch").click(function () {
+
+            $('#resultSearchByCodFisc').empty();
+            let InputCodFisc = $('#InputSearch').val();
+
+            $.ajax({
+                url: 'GetMedicineByCodFisc',
+                method: 'GET',
+                data: { 'codFisc': InputCodFisc },
+                success: function (a) {
+                    console.log(a);
+                    if (a == "ERRORE") {
+                        $('#resultSearchByCodFisc').append("<div class=\"alert alert-warning\">Nessun medicinale trovato</div>")
+                    } else {
+                        $.each(a, function (index, valore) {
+                            $('#resultSearchByCodFisc').append("<div class=\"card\" style=\"width: 18rem; \"> " +
+                                "<img src =\"~/Content/Assets/Img/Medicines/" + valore.UrlImg + " class=\"card-img-top\" alt =\"...\" />" +
+                                "<div class=\"card-body\">" +
+                                "<h5 class=\"card-title\">" + valore.NameMedicine + "</h5>" +
+                                "<p class=\"card-text\">Codice Fiscale:" + valore.CodFisc + "</p>" +
+                                "<p class=\"card-text\">Medicina acquistata da:" + valore.FirstName + " " + valore.LastName + "</p>" +
+                                "<p class=\"card-text\">Si trova nel cassetto:" + valore.IdentifierDrawer + "</p>" +
+                                "<a href=\"~/Medicines/Index\" class=\"btn btn-primary\">Dettagli Medicina</a>" +
+                                "</div>" +
+                                "</div>")
+                        })
+                        
+                    }               
+                }
+                })
+        })
+    })
+</script>
