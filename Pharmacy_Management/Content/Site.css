@@ -20,6 +20,10 @@ ol, ul {
     padding: 0;
 }
 
+img, svg {
+    vertical-align: baseline;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     /*padding-left: 15px;
@@ -93,21 +97,26 @@ textarea {
     padding: 20px 30px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     font-size: 20px;
     overflow-x: hidden;
+    flex-direction: column;
 }
 
-    #sidenav-body ul {
-        width: 100%;
-    }
+.arrow_down-align {
+    vertical-align: middle;
+}
+
+#sidenav-body ul {
+    width: 100%;
+}
 
     #sidenav-body ul li {
-        height: 46px;
+        padding-left: 20px;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
 
         #sidenav-body ul li:hover {

@@ -20,32 +20,46 @@
                     <h3>Pharma One</h3>
                 </div>
                 <div id="sidenav-body">
-                    <ul>
-                        <li>
-                            <div>
-                                <img src="~/Content/Assets/Img/Icons/Dashboardr.png" alt="Alternate Text" /> <a href="~/Dashboard/Index">Dashboard</a>
-                            </div> 
-                            <div>
-                                <img src="~/Content/Assets/Img/Icons/Arrow-down.png" alt="Alternate Text" />
-                            </div>
-                            <ul class="d-none">
-                                <li><a href="~/"></a>Gestione Medicine</li>
-                                <li><a href="~/"></a>Gestione Clienti</li>
-                                <li><a>Gestione prodotti in vendita</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="~/Orders/PreviewCustomers">Effettua Ordine</a></li>
-                        <li>
-                            <div><img src="~/Content/Assets/Img/Icons/Inventory.png" alt="Alternate Text" /> Inventario</div>
-                            <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" alt="Alternate Text" /></div>
-                            <ul class="d-none">
-                                <li><a href="~/"></a>Lista di Medicine</li>
-                                <li><a href="~/"></a>Categorie Medicine</li>                               
-                            </ul>
-                        </li>
-                        <li><div><img src="~/Content/Assets/Img/Icons/Reports.png" alt="Alternate Text" /> Statistiche</div> <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" alt="Alternate Text" /></div></li>
-                        <li><div><img src="~/Content/Assets/Img/Icons/User.png" alt="Alternate Text" /> Account</div> <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" alt="Alternate Text" /></div></li>
-                    </ul>
+
+                    <div class="d-flex justify-content-between align-content-center w-100 click-down">
+                        <div>
+                            <img src="~/Content/Assets/Img/Icons/Dashboardr.png" alt="Alternate Text" /> <a href="~/Dashboard/Index">Dashboard</a>
+                        </div>
+                        <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>
+                    </div>
+
+                    <div class="show-links">
+                        <ul class="d-none">
+                            <li><a href="~/"></a>Medicine</li>
+                            <li><a href="~/"></a>Clienti</li>
+                            <li><a>Prodotti</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-content-center w-100">
+                        <a href="~/Orders/PreviewCustomers">Effettua Ordine</a>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-content-center w-100">
+                        <div><img src="~/Content/Assets/Img/Icons/Inventory.png" alt="Alternate Text" /> Inventario</div>
+                        <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>
+                        <ul class="d-none">
+                            <li><a href="~/"></a>Lista di Medicine</li>
+                            <li><a href="~/"></a>Categorie Medicine</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-between align-content-center w-100">
+                        <div>
+                            <img src="~/Content/Assets/Img/Icons/Reports.png" alt="Alternate Text" /> <a href="#">Statistiche</a>
+                        </div>
+                        <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>
+                    </div>
+                    <div class="d-flex justify-content-between align-content-center w-100">
+                        <div>
+                            <img src="~/Content/Assets/Img/Icons/User.png" alt="Alternate Text" /> <a href="#">Account</a>
+                        </div>
+                        <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>
+                    </div>
                 </div>
             </div>
             <div class="col-10"> @RenderBody()</div>
@@ -56,3 +70,11 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".click-down").click(function () {
+            $(".show-links > ul").toggleClass("d-none");
+        })
+    })
+</script>
