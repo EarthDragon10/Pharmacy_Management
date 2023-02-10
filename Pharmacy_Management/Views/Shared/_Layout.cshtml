@@ -25,7 +25,10 @@
                         <div>
                             <img src="~/Content/Assets/Img/Icons/Dashboardr.png" alt="Alternate Text" /> <a href="~/Dashboard/Index">Dashboard</a>
                         </div>
-                        <div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>
+                        <div>
+                            <img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align show_arrow-down" alt="Alternate Text" />
+                            <img src="~/Content/Assets/Img/Icons/arrow-up.png" class="arrow_down-align show_arrow-up d-none" alt="Alternate Text" />
+                        </div>
                     </div>
 
                     <div class="show-links">
@@ -75,6 +78,9 @@
     $(document).ready(function () {
         $(".click-down").click(function () {
             $(".show-links > ul").toggleClass("d-none");
+            $(".click-down").toggleClass("click-down_clicked");
+            $(".show_arrow-down").toggleClass("d-none");
+            $(".show_arrow-up").toggleClass("d-none");
         })
     })
 </script>

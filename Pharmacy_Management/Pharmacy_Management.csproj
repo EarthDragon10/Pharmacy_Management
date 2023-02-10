@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Assets\Img\Icons\Arrow-down.png" />
+    <Content Include="Content\Assets\Img\Icons\arrow-up.png" />
     <Content Include="Content\Assets\Img\Icons\Dashboardr.png" />
     <Content Include="Content\Assets\Img\Icons\Inventory.png" />
     <Content Include="Content\Assets\Img\Icons\Reports.png" />

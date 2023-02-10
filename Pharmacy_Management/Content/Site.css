@@ -10,6 +10,11 @@ body {
 
 a {
     text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: white;
 }
 
 li {
@@ -94,7 +99,7 @@ textarea {
 /* SIDEBAR BODY */
 
 #sidenav-body {
-    padding: 20px 30px;
+    /*padding: 20px 30px;*/
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -111,6 +116,27 @@ textarea {
     width: 100%;
 }
 
+.click-down {
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+/*.click-down:hover {
+        background-color: #009099;
+    }*/
+
+.click-down_clicked {
+    background-color: #009099;
+}
+
+.show-links {
+    padding: 5px 30px;
+}
+
+.show-links_clicked {
+    transition: all 1s ease;
+}
+
     #sidenav-body ul li {
         padding-left: 20px;
         display: flex;
@@ -118,7 +144,3 @@ textarea {
         align-items: flex-start;
         justify-content: center;
     }
-
-        #sidenav-body ul li:hover {
-            background-color: #374251;
-        }
