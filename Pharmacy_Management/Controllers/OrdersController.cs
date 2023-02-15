@@ -142,7 +142,7 @@ namespace Pharmacy_Management.Controllers
                 // Oltre ad effettuare l'ordine, aggiorno anche la quantitá del prodotto nell'inventario
                 
                 db.SaveChanges();
-                return RedirectToAction("Orders", "Index");
+                return RedirectToAction("Index");
             }
 
             //ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", orders.IdCustomer);

@@ -8,12 +8,12 @@ body {
     margin: 0px;
 }
 
-a {
+.sidenav a {
     text-decoration: none;
     color: white;
 }
 
-a:hover {
+.sidenav a:hover {
     color: white;
 }
 
