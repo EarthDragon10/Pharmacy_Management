@@ -16,7 +16,7 @@ namespace Pharmacy_Management.Controllers
         private ModelDbContext DbContext = new ModelDbContext();
         // GET: Dashboard
         public ActionResult Index()
-        {
+        {          
             return View();
         }
 

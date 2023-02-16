@@ -116,8 +116,12 @@ textarea {
     width: 100%;
 }
 
-.click-down {
+.sidenav_row-spacing {
     padding: 10px 30px;
+}
+
+.click-down {
+    /*padding: 10px 30px;*/
     cursor: pointer;
 }
 
@@ -144,3 +148,36 @@ textarea {
         align-items: flex-start;
         justify-content: center;
     }
+
+/* IMG User Login */
+
+.user_img {
+    border-radius: 4px;
+    width: 42px;
+    height: 42px;
+    margin-right: 16px;
+}
+
+.details_user-style {
+    line-height: 14px;
+    font-weight: 500;
+}
+
+.details_user-style > h4 {
+    font-size: 14px;
+}
+
+.details_user-style > p {
+    font-size: 11px;
+    color: #FED600;
+    margin: 0;
+}
+
+.user_btn {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.user_row-spacing {
+    padding: 30px;
+}

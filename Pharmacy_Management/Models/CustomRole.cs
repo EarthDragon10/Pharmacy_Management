@@ -39,19 +39,23 @@ namespace Pharmacy_Management.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            string[] result = new string[0];
 
-            if (DbContext.Customers.Where(u => u.Username == username).Count() > 0)
-            {
-                string role = DbContext.Customers.Where(u => u.Username == username).FirstOrDefault().Roles.TypeRole;
-                result[0] = role;
+            string data = DbContext.Employees.Where(e => e.Username == username).FirstOrDefault().Roles.TypeRole;
+            var result = new string[] { data };
 
-            }
-            else
-            {
-                string role = DbContext.Employees.Where(u => u.Username == username).FirstOrDefault().Roles.TypeRole;
-                result[0] = role;
-            }
+            //string[] result = new string[0];
+
+            //if (DbContext.Customers.Where(u => u.Username == username).Count() > 0)
+            //{
+            //    string role = DbContext.Customers.Where(u => u.Username == username).FirstOrDefault().Roles.TypeRole;
+            //    result[0] = role;
+
+            //}
+            //else
+            //{
+            //    string role = DbContext.Employees.Where(u => u.Username == username).FirstOrDefault().Roles.TypeRole;
+            //    result[0] = role;
+            //}
 
             return result;
         }
