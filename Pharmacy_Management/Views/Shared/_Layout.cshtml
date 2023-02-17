@@ -14,7 +14,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 sidenav">
+            <div class="sidenav">
                 <div class="sidenav-header d-flex justify-content-center align-content-center align-items-center gap-2">
                     <img src="~/Content/Assets/Img/Logo/logo.svg" alt="Logo" class="img-logo" />
                     <h3>Pharma One</h3>
@@ -32,9 +32,16 @@
                         <div class="show_user-links">
                             <img src="~/Content/Assets/Img/Icons/user_btn.png" class="user_btn" alt="Alternate Text" />
                             <div class="user_links d-none">
-                                @Html.ActionLink("Profilo", "Details", "Employees", new {id = Pharmacy_Management.Models.Users.IdEmployee})
-                                @Html.ActionLink("Logout", "SignOut", "Login")
+                                <div id="border_user-links" class="d-flex justify-content-between align-items-center gap-2 user-link">
+                                    <img src="~/Content/Assets/Img/Icons/user-icon.png" alt="Alternate Text" />
+                                    @Html.ActionLink("Profilo", "Details", "Employees", new { id = Pharmacy_Management.Models.Users.IdEmployee }, new { @class = "text-black" })
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center gap-2 user-link">
+                                    <img src="~/Content/Assets/Img/Icons/logout.png" alt="Alternate Text" />
+                                    @Html.ActionLink("Logout", "SignOut", "Login", null, new { @class = "text-danger" })
+                                </div>                          
                             </div>
+                            <div id="square-rotate_user" class="d-none"></div>
                         </div>        
                     </div>
 
@@ -82,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-10"> @RenderBody()</div>
+            <div class="main-content"> @RenderBody()</div>
         </div>
     </div>
     
@@ -101,7 +108,8 @@
         })
 
         $(".show_user-links").click(function () {
-            $(".user_links").toggleClass("d-none")
+            $(".user_links").toggleClass("d-none");
+            $("#square-rotate_user").toggleClass("d-none");
         })
     })
 </script>
