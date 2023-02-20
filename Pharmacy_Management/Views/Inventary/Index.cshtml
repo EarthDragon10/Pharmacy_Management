@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container inventory-content py-5">
+    <h2>Inventario</h2>
+    <p>Liste ed informazioni di medicine disponibili nel magazzino.</p>
+    <div class="row">
+
+        <div class="d-flex justify-content-start align-content-center gap-5">
+
+            <div class="inventory-box blue-border">
+                <div class="inventory_box-content">
+                    <img src="~/Content/Assets/Img/Icons/icon_medicinal-box.png" alt="Alternate Text" />
+                    <p class="fw-bold">298</p>
+                    <p>Quantitá di Medicine</p>
+                </div>
+                <div class="inventory_box-subLink blue_top-border bg-blue">
+                    <a class="inventory_link" href="~/Views/Medicines/Index.cshtml">Vai Alla Lista Completa >></a>
+                </div>
+            </div>
+
+
+
+            <div class="inventory-box green-border">
+                <div class="inventory_box-content">
+                    <img src="~/Content/Assets/Img/Icons/icon_medicinal-box.png" alt="Alternate Text" />
+                    <p class="fw-bold">298</p>
+                    <p>Categorie di Medicine</p>
+                </div>
+                <div class="inventory_box-subLink green_top-border bg-green">
+                    <a class="inventory_link" href="~/Views/TypeProducts/Index.cshtml">Guarda le Categorie >></a>
+                </div>
+            </div>
+
+
+            <div class="inventory-box red-border">
+                <div class="inventory_box-content">
+                    <img src="~/Content/Assets/Img/Icons/inventory_danger-medicines.png" alt="Alternate Text" />
+                    <p class="fw-bold">01</p>
+                    <p>Carenze di Medicine</p>
+                </div>
+                <div class="inventory_box-subLink red_top-border bg-red">
+                    <a class="inventory_link" href="#">Risolvi >></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

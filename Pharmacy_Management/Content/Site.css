@@ -224,6 +224,7 @@ textarea {
 .main-content {
     margin-left: 245px;
     padding-right: 30px;
+    height: 100%;
 }
 
 /* Home/Index */
@@ -274,4 +275,92 @@ textarea {
 
 #home_sub-txt > span {
     padding: 16px 18px;
+}
+
+/* INVENTARIO */
+
+.inventory-box {
+    height: 152px;
+    width: 212px;
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    background-color: white;
+}
+
+.inventory_link {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.blue-border { 
+    border: 2px solid #03A9F5;
+}
+
+.blue_top-border {
+    border-top: 2px solid #03A9F5;
+}
+
+.green-border {
+    border: 2px solid #01A768;
+}
+
+.green_top-border {
+    border-top: 2px solid #01A768;
+}
+
+.red-border {
+    border: 2px solid #F0483E;
+}
+
+.red_top-border {
+    border-top: 2px solid #F0483E;
+}
+
+
+.bg-blue {
+    background-color: rgba(3, 169, 245,0.3);
+}
+
+.bg-green {
+    background-color: rgba(1, 167, 104,0.3);
+}
+
+.bg-red {
+    background-color: rgba(240, 72, 62, 0.3);
+}
+
+.inventory_box-content {
+    padding: 5px 8px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.inventory_box-subLink {
+    width: 100%;
+    height: 100%;
+    /* margin: 0 auto; */
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.bg_white-grey {
+    background-color: #E6EBF7;
+}
+
+.inventory-content {
+    height: 100vh;
 }

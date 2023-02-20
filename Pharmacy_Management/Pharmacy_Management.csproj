@@ -186,7 +186,10 @@
     <Content Include="Content\Assets\Img\Icons\Arrow-down.png" />
     <Content Include="Content\Assets\Img\Icons\arrow-up.png" />
     <Content Include="Content\Assets\Img\Icons\Dashboardr.png" />
+    <Content Include="Content\Assets\Img\Icons\icon_medicinal-box.png" />
     <Content Include="Content\Assets\Img\Icons\Inventory.png" />
+    <Content Include="Content\Assets\Img\Icons\inventory_danger-medicines.png" />
+    <Content Include="Content\Assets\Img\Icons\inventory_groupMedicine.png" />
     <Content Include="Content\Assets\Img\Icons\logout.png" />
     <Content Include="Content\Assets\Img\Icons\Reports.png" />
     <Content Include="Content\Assets\Img\Icons\sfondo1.jpg" />
@@ -331,13 +334,13 @@
     <Content Include="Views\Orders\ChoiceProduct.cshtml" />
     <Content Include="Views\Orders\CreateCustomers.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Inventary\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Assets\Img\Customers\" />
     <Folder Include="Content\Assets\Img\Medicines\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Inventary\" />
     <Folder Include="Views\ResultSearch\" />
   </ItemGroup>
   <ItemGroup>
