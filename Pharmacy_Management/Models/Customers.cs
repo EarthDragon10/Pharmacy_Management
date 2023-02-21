@@ -19,9 +19,9 @@ namespace Pharmacy_Management.Models
         [Key]
         public int IdCustomer { get; set; }
 
-        [Required]
-        [StringLength(30)]
-        public string Username { get; set; }
+        //[Required]
+        //[StringLength(30)]
+        //public string Username { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -31,17 +31,17 @@ namespace Pharmacy_Management.Models
         [StringLength(30)]
         public string LastName { get; set; }
 
-        [Required]
-        [StringLength(30)]
-        public string Pwd { get; set; }
+        //[Required]
+        //[StringLength(30)]
+        //public string Pwd { get; set; }
 
         [Required]
         [StringLength(16)]
         public string CodFisc { get; set; }
 
-        public string UrlImg { get; set; }
-        [NotMapped()]
-        public HttpPostedFileBase FileImg { get; set; }
+        //public string UrlImg { get; set; }
+        //[NotMapped()]
+        //public HttpPostedFileBase FileImg { get; set; }
 
         public int IdRole { get; set; }
 

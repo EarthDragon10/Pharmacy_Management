@@ -27,10 +27,6 @@ namespace Pharmacy_Management.Controllers
             {
                 FormsAuthentication.SetAuthCookie(user.Username, false);
                 return Redirect(FormsAuthentication.DefaultUrl);
-            } else if(DbContext.Customers.Where(e => e.Username == user.Username && e.Pwd == user.Password).Count() > 0)
-            {
-                FormsAuthentication.SetAuthCookie(user.Username, false);
-                return Redirect(FormsAuthentication.DefaultUrl);
             } else
             {
                 ViewBag.Errore = "Username e/o password sbagliati";
@@ -89,11 +85,11 @@ namespace Pharmacy_Management.Controllers
         {
             if (!ModelState.IsValid)
             {
-                if(customer.FileImg != null)
+                if(customer.CodFisc != null)
                 {
-                    string Path = Server.MapPath("~/Content/Assets/Img/Customers/" + customer.FileImg.FileName);
-                    customer.FileImg.SaveAs(Path);
-                    customer.UrlImg = customer.FileImg.FileName;
+                    //string Path = Server.MapPath("~/Content/Assets/Img/Customers/" + customer.FileImg.FileName);
+                    //customer.FileImg.SaveAs(Path);
+                    //customer.UrlImg = customer.FileImg.FileName;
                     DbContext.Customers.Add(customer);
                     DbContext.SaveChanges();
                     return RedirectToAction("Index", "Home");

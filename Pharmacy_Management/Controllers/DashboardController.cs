@@ -47,7 +47,7 @@ namespace Pharmacy_Management.Controllers
         public ActionResult CustomersPartialView()
         {
             var customers = DbContext.Customers;
-            ViewBag.Customers = customers.Where(c => c.Username != null).Count();
+            ViewBag.Customers = customers.Where(c => c.CodFisc != null).Count();
             return PartialView();
         }
 

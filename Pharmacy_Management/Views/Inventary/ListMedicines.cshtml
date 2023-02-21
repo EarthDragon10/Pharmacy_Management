@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Pharmacy_Management.Models.Medicines>
+
+@{
+    ViewBag.Title = "ListMedicines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Inventario</span> > Lista di Medicine (@ViewBag.MedicinesCount)</h1>
+    <p>Medicine dispinibili nei casetti.</p>
+
+    <a href="~/Inventary/CreateMedicine" class="btn btn-success mb-4" >+ Nuovo Medicinale</a>
+
+    <table class="table tables_pharmacy">
+        <tr>
+            <th>
+                Nome della Medicina
+            </th>
+            <th>
+                Immagine
+            </th>
+            <th>
+                Tipo di prodotto
+            </th>
+            <th>Prezzo</th>
+            <th>
+                Cassetto
+            </th>
+            <th>
+                Giacenza
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameMedicine)
+                </td>
+                <td>
+                    <img src="~/Content/Assets/Img/Medicines/@item.UrlImg" alt="Alternate Text" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeProduct.DescTypeProduct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Drawers.Identifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.ActionLink("Vai ai Dettagli", "DetailsMedicine", new { id = item.IdMedicine })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

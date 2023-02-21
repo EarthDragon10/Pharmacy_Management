@@ -223,7 +223,7 @@ textarea {
 
 .main-content {
     margin-left: 245px;
-    padding-right: 30px;
+    width: calc(100% - 245px);
     height: 100%;
 }
 
@@ -363,4 +363,12 @@ textarea {
 
 .inventory-content {
     height: 100vh;
+}
+
+.text-grey {
+    color: rgba(29, 36, 46, 0.5);
+}
+
+.tables_pharmacy {
+    background-color: white;
 }

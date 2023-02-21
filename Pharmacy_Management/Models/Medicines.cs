@@ -32,6 +32,7 @@ namespace Pharmacy_Management.Models
         public HttpPostedFileBase FileImg { get; set; }
 
         public int IdSupplierCompanies { get; set; }
+        public decimal price { get; set; }
 
         public int IdDrawer { get; set; }
         public int Stock { get; set; }
