@@ -1,0 +1,27 @@
+﻿@model Pharmacy_Management.Models.Medicines
+
+@{
+    ViewBag.Title = "DeleteProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="vh-100 px-4 py-4">
+    <h3>Sei sicuro di voler cancellare il prodotto?</h3>
+    <div>
+        <p>Nome prodotto: @Model.NameMedicine</p>
+        <p>Tipo prodotto: @Model.TypeProduct.DescTypeProduct</p>
+        <p>Quantitá: @Model.Stock</p>
+        <p>Prezzo: @Model.price</p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger text-black" />
+                @Html.ActionLink("Torna indietro", "ListMedicines", null, new { @class = "btn btn-primary"})
+            </div>
+        }
+    </div>
+
+</div>

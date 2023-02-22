@@ -32,6 +32,8 @@ namespace Pharmacy_Management.Models
         public HttpPostedFileBase FileImg { get; set; }
 
         public int IdSupplierCompanies { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+  
         public decimal price { get; set; }
 
         public int IdDrawer { get; set; }

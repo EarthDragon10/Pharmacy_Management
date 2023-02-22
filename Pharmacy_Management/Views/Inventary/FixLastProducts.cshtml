@@ -1,14 +1,15 @@
 ﻿@model IEnumerable<Pharmacy_Management.Models.Medicines>
 
 @{
-    ViewBag.Title = "ListMedicines";
+    ViewBag.Title = "FixLastProducts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="vh-100 px-3 py-5">
-    <h1><span class="text-grey">Inventario</span> > Lista di Medicine (@ViewBag.MedicinesCount)</h1>
+    <h1><span class="text-grey">Inventario</span> > Gestione delle ultime Giacenze</h1>
     <p>Medicine dispinibili nei casetti.</p>
 
-    <a href="~/Inventary/CreateProduct" class="btn btn-success mb-4" >+ Nuovo Medicinale</a>
+    <a href="~/Inventary/CreateProduct" class="btn btn-success mb-4">+ Nuovo Medicinale</a>
 
     <table class="table tables_pharmacy">
         <tr>

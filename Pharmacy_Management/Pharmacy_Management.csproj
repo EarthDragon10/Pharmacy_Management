@@ -346,6 +346,9 @@
     <Content Include="Views\Inventary\ListMedicines.cshtml" />
     <Content Include="Views\Inventary\DetailsMedicine.cshtml" />
     <Content Include="Views\Inventary\EditMedicine.cshtml" />
+    <Content Include="Views\Inventary\DeleteProduct.cshtml" />
+    <Content Include="Views\Inventary\CreateProduct.cshtml" />
+    <Content Include="Views\Inventary\FixLastProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

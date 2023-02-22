@@ -14,11 +14,11 @@
             <div class="inventory-box blue-border">
                 <div class="inventory_box-content">
                     <img src="~/Content/Assets/Img/Icons/icon_medicinal-box.png" alt="Alternate Text" />
-                    <p class="fw-bold">298</p>
+                    <p class="fw-bold">@ViewBag.MedicinesCount</p>
                     <p>Quantitá di Medicine</p>
                 </div>
                 <div class="inventory_box-subLink blue_top-border bg-blue">
-                    <a class="inventory_link" href="~/Views/Medicines/Index.cshtml">Vai Alla Lista Completa >></a>
+                    <a class="inventory_link" href="~/Inventary/ListMedicines">Vai Alla Lista Completa >></a>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
             <div class="inventory-box green-border">
                 <div class="inventory_box-content">
                     <img src="~/Content/Assets/Img/Icons/icon_medicinal-box.png" alt="Alternate Text" />
-                    <p class="fw-bold">298</p>
+                    <p class="fw-bold">@ViewBag.MedicineGroups</p>
                     <p>Categorie di Medicine</p>
                 </div>
                 <div class="inventory_box-subLink green_top-border bg-green">
@@ -39,11 +39,11 @@
             <div class="inventory-box red-border">
                 <div class="inventory_box-content">
                     <img src="~/Content/Assets/Img/Icons/inventory_danger-medicines.png" alt="Alternate Text" />
-                    <p class="fw-bold">01</p>
+                    <p class="fw-bold">@ViewBag.FinishedMedicinesCount</p>
                     <p>Carenze di Medicine</p>
                 </div>
                 <div class="inventory_box-subLink red_top-border bg-red">
-                    <a class="inventory_link" href="#">Risolvi >></a>
+                    <a class="inventory_link" href="~/Inventary/FixLastProducts">Risolvi >></a>
                 </div>
             </div>
         </div>

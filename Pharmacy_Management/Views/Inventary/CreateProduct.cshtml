@@ -1,15 +1,17 @@
 ﻿@model Pharmacy_Management.Models.Medicines
 
 @{
-    ViewBag.Title = "EditMedicine";
+    ViewBag.Title = "CreateProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class=" p-4">
-    <h2>EditMedicine</h2>
+<div class="vh-1oo p-4">
 
 
-    @using (Html.BeginForm("EditMedicine", "Inventary", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    <h2>Aggiungi Nuovo Prodotto</h2>
+
+
+    @using (Html.BeginForm("CreateProduct", "Inventary", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -17,15 +19,13 @@
             <h4>Medicines</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.IdMedicine)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NameMedicine, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NameMedicine, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NameMedicine, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.NameMedicine, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NameMedicine, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NameMedicine, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.IdTypeProduct, "Tipo Prodotto", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -70,10 +70,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @{Html.EnableClientValidation(false);}
                     @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
-                    @{Html.EnableClientValidation(true);}
                 </div>
             </div>
 
@@ -95,7 +93,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Salva modifiche" class="btn btn-success my-4" />
+                    <input type="submit" value="Crea Prodotto" class="btn btn-success my-4" />
                     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
                 </div>
             </div>
@@ -103,9 +101,8 @@
     }
 
     <div>
-        
+       
     </div>
-
 </div>
 
 @section Scripts {
