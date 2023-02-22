@@ -8,32 +8,33 @@
 <div class="vh-100 px-3 py-5">
     <h1><span class="text-grey">Inventario</span> > Gestione delle ultime Giacenze</h1>
     <p>Medicine dispinibili nei casetti.</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <table class="table tables_pharmacy red-border">
+            <tr class="bg-red">
+                <th>
+                    Nome della Medicina
+                </th>
+                <th>
+                    Immagine
+                </th>
+                <th>
+                    Tipo di prodotto
+                </th>
+                <th>Prezzo</th>
+                <th>
+                    Cassetto
+                </th>
+                <th>
+                    Giacenza
+                </th>
+                <th>Quantitá da Ordinare</th>
+            </tr>
 
-    <a href="~/Inventary/CreateProduct" class="btn btn-success mb-4">+ Nuovo Medicinale</a>
 
-    <table class="table tables_pharmacy">
-        <tr>
-            <th>
-                Nome della Medicina
-            </th>
-            <th>
-                Immagine
-            </th>
-            <th>
-                Tipo di prodotto
-            </th>
-            <th>Prezzo</th>
-            <th>
-                Cassetto
-            </th>
-            <th>
-                Giacenza
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+            @foreach (var item in Model)
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.NameMedicine)
@@ -54,11 +55,20 @@
                     @Html.DisplayFor(modelItem => item.Stock)
                 </td>
                 <td>
-                    @Html.ActionLink("Vai ai Dettagli", "DetailsMedicine", new { id = item.IdMedicine })
+
+                    @Html.HiddenFor(modelItem => item.IdMedicine)
+                    <div class="form-group d-flex m-0 gap-2">
+                        <div class="range_px">
+                            @Html.EditorFor(modelItem => item.Stock, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(modelItem => item.Stock, "", new { @class = "text-danger" })
+                        </div>
+
+                        <input type="submit" value="salva quantitá" class="btn btn-success" />
+                    </div>
                 </td>
             </tr>
-        }
-
-    </table>
-
-</div>
+            }
+            
+        </table>
+    }
+    </div>

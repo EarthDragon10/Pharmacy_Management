@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
@@ -44,6 +45,12 @@ namespace Pharmacy_Management.Controllers
         {
             var finishedMedicines = db.Medicines.Where(m => m.Stock <= 5).Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct).ToList();
             return View(finishedMedicines);
+        }
+
+        [HttpPost]
+        public ActionResult FixLastProducts(Medicines medicine)
+        {
+            return RedirectToAction("Index");
         }
 
         public ActionResult DetailsMedicine(int id) {

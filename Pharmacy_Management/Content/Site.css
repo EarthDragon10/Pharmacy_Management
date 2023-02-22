@@ -372,3 +372,7 @@ textarea {
 .tables_pharmacy {
     background-color: white;
 }
+
+.range_px {
+    width: 30px !important;
+}
