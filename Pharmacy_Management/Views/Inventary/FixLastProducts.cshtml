@@ -8,8 +8,7 @@
 <div class="vh-100 px-3 py-5">
     <h1><span class="text-grey">Inventario</span> > Gestione delle ultime Giacenze</h1>
     <p>Medicine dispinibili nei casetti.</p>
-    @using (Html.BeginForm())
-    {
+
         @Html.AntiForgeryToken()
         <table class="table tables_pharmacy red-border">
             <tr class="bg-red">
@@ -58,17 +57,17 @@
 
                     @Html.HiddenFor(modelItem => item.IdMedicine)
                     <div class="form-group d-flex m-0 gap-2">
-                        <div class="range_px">
+                        @*<div class="range_px">
                             @Html.EditorFor(modelItem => item.Stock, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(modelItem => item.Stock, "", new { @class = "text-danger" })
-                        </div>
+                        </div>*@
 
-                        <input type="submit" value="salva quantitá" class="btn btn-success" />
+                       @Html.ActionLink("Risolvi", "FixSingleProducts", new { id = item.IdMedicine}, new { @class = "btn btn-danger"})
                     </div>
                 </td>
             </tr>
             }
             
         </table>
-    }
+
     </div>

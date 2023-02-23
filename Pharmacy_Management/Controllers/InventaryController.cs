@@ -17,7 +17,7 @@ namespace Pharmacy_Management.Controllers
         // GET: Inventary
         public ActionResult Index()
         {
-            var finishedMedicines = db.Medicines.Where(m => m.Stock > 5).Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct);
+            var finishedMedicines = db.Medicines.Where(m => m.Stock <= 5).Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct);
             ViewBag.FinishedMedicinesCount = finishedMedicines.Count();
             var medicines = db.Medicines.Where(m => m.Stock > 0).ToList();
             int TotalStock = 0;
@@ -46,10 +46,22 @@ namespace Pharmacy_Management.Controllers
             var finishedMedicines = db.Medicines.Where(m => m.Stock <= 5).Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct).ToList();
             return View(finishedMedicines);
         }
+      
+        public ActionResult FixSingleProducts(int id)
+        {
+            var medicine = db.Medicines.Find(id);
+            return View(medicine);
+        }
 
         [HttpPost]
-        public ActionResult FixLastProducts(Medicines medicine)
+        [ValidateAntiForgeryToken]
+        public ActionResult FixSingleProducts(Medicines medicine)
         {
+            Medicines newMedicine = db.Medicines.Find(medicine.IdMedicine);
+            newMedicine.Stock = medicine.Stock;
+            db.Entry(newMedicine).State = EntityState.Modified;
+            db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
