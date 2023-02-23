@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Pharmacy_Management.Models.TypeProduct>
+
+@{
+    ViewBag.Title = "ListGroupsMedicine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Inventario > </span>Lista Categorie Di Prodotti</h1>
+
+    <p>
+        @Html.ActionLink("Create una nuova categoria", "CreateGroupMedicine")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DescTypeProduct)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescTypeProduct)
+                </td>
+                <td class="gap-2">
+                    @Html.ActionLink("Modifica", "EditGroupMedicine", new { id = item.IdTypeProduct }, new { @class= "btn btn-warning"}) 
+                    @Html.ActionLink("Dettagli", "DetailsGroupMedicine", new { id = item.IdTypeProduct }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("Cancella", "DeleteGroupMedicine", new { id = item.IdTypeProduct }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

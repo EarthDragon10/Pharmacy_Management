@@ -31,6 +31,9 @@ namespace Pharmacy_Management.Controllers
             return View();
         }
 
+        
+
+
         public ActionResult ListMedicines()
         {
             var medicines = db.Medicines.Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct);
@@ -169,6 +172,105 @@ namespace Pharmacy_Management.Controllers
             ViewBag.IdTypeMedicine = new SelectList(db.TypeMedicine, "IdTypeMedicine", "DescTypeMedicine", medicines.IdTypeMedicine);
             ViewBag.IdTypeProduct = new SelectList(db.TypeProduct, "IdTypeProduct", "DescTypeProduct", medicines.IdTypeProduct);
             return View(medicines);
+        }
+
+        // Categorie di Prodotti
+        public ActionResult ListGroupsMedicine()
+        {
+            return View(db.TypeProduct.ToList());
+        }
+
+        public ActionResult DetailsGroupMedicine(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TypeProduct typeProduct = db.TypeProduct.Find(id);
+            if (typeProduct == null)
+            {
+                return HttpNotFound();
+            }
+            return View(typeProduct);
+        }
+
+        public ActionResult CreateGroupMedicine()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateGroupMedicine([Bind(Include = "IdTypeProduct,DescTypeProduct")] TypeProduct typeProduct)
+        {
+            if (ModelState.IsValid)
+            {
+                db.TypeProduct.Add(typeProduct);
+                db.SaveChanges();
+                return RedirectToAction("ListGroupsMedicine");
+            }
+
+            return View(typeProduct);
+        }
+
+        public ActionResult EditGroupMedicine(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TypeProduct typeProduct = db.TypeProduct.Find(id);
+            if (typeProduct == null)
+            {
+                return HttpNotFound();
+            }
+            return View(typeProduct);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "IdTypeProduct,DescTypeProduct")] TypeProduct typeProduct)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(typeProduct).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("ListGroupsMedicine");
+            }
+            return View(typeProduct);
+        }
+
+        public ActionResult DeleteGroupMedicine(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TypeProduct typeProduct = db.TypeProduct.Find(id);
+            if (typeProduct == null)
+            {
+                return HttpNotFound();
+            }
+            return View(typeProduct);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteGroupMedicineConfirmed(int id)
+        {
+            TypeProduct typeProduct = db.TypeProduct.Find(id);
+            db.TypeProduct.Remove(typeProduct);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿@model Pharmacy_Management.Models.TypeProduct
+
+@{
+    ViewBag.Title = "DeleteGroupMedicine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="vh-100  px-3 py-5">
+    <h1><span class="text-grey">Inventario > Lista Categorie Di Prodotti</span> > Crea Categoria</h1>
+
+    <h3 class="text-danger">Sei sicuro di cancellarlo?</h3>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DescTypeProduct)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DescTypeProduct)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> 
+                @Html.ActionLink("Torna Indietro", "ListGroupsMedicine", null, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</div>

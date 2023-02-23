@@ -39,13 +39,13 @@
                                 <div class="d-flex justify-content-between align-items-center gap-2 user-link">
                                     <img src="~/Content/Assets/Img/Icons/logout.png" alt="Alternate Text" />
                                     @Html.ActionLink("Logout", "SignOut", "Login", null, new { @class = "text-danger" })
-                                </div>                          
+                                </div>
                             </div>
                             <div id="square-rotate_user" class="d-none"></div>
-                        </div>        
+                        </div>
                     </div>
 
-                    <div class="d-flex justify-content-between align-content-center w-100 click-down sidenav_row-spacing">
+                    <div class="d-flex justify-content-between align-content-center w-100 dashboard_click-down sidenav_row-spacing">
                         <div>
                             <img src="~/Content/Assets/Img/Icons/Dashboardr.png" alt="Alternate Text" /> <a href="~/Dashboard/Index">Dashboard</a>
                         </div>
@@ -55,37 +55,40 @@
                         </div>
                     </div>
 
-                    <div class="show-links">
+                    <div class="dashboard_show-links">
                         <ul class="d-none">
-                            <li><a href="~/"></a>Medicine</li>
-                            <li><a href="~/"></a>Clienti</li>
-                            <li><a>Prodotti</a></li>
+                            <li><a href="~/Orders/Index">Effettua Ordini</a></li>
+                            <li><a href="~/Pescritions/Index">Ricette Mediche</a></li>
+                            <li><a href="~/Customers/Index">Prodotti</a></li>
                         </ul>
                     </div>
 
                     <div class="d-flex justify-content-between align-content-center w-100 sidenav_row-spacing">
-                        <a href="~/Orders/PreviewCustomers">Effettua Ordine</a>
+                        <div><img src="~/Content/Assets/Img/Icons/Inventory.png" alt="Alternate Text" /> <a href="~/Inventary/Index">Inventario</a></div>
+                        <div>
+                            <img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align show_arrow-down" alt="Alternate Text" />
+                            <img src="~/Content/Assets/Img/Icons/arrow-up.png" class="arrow_down-align show_arrow-up d-none" alt="Alternate Text" />
+                        </div>
                     </div>
 
-                    <div class="d-flex justify-content-between align-content-center w-100 sidenav_row-spacing">
-                        <div><img src="~/Content/Assets/Img/Icons/Inventory.png" alt="Alternate Text" /> Inventario</div>
-                        @*<div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>
-            <ul class="d-none">
-                <li><a href="~/"></a>Lista di Medicine</li>
-                <li><a href="~/"></a>Categorie Medicine</li>
-            </ul>*@
+                    <div class="show-links">
+                        <ul class="d-none">
+                            <li><a href="~/Orders/Index">Lista di Prodotti</a></li>
+                            <li><a href="~/Pescritions/Index">Categorie</a></li>
+                            <li><a href="~/Customers/Index">Ultime Giacenze</a></li>
+                        </ul>
                     </div>
+
                     <div class="d-flex justify-content-between align-content-center w-100 sidenav_row-spacing">
                         <div>
                             <img src="~/Content/Assets/Img/Icons/Reports.png" alt="Alternate Text" /> <a href="#">Statistiche</a>
                         </div>
-                        @*<div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>*@
                     </div>
                     <div class="d-flex justify-content-between align-content-center w-100 sidenav_row-spacing">
                         <div>
-                            <img src="~/Content/Assets/Img/Icons/User.png" alt="Alternate Text" /> <a href="#">Account</a>
+                            <img src="~/Content/Assets/Img/Icons/User.png" alt="Alternate Text" /> <a href="~/Employees/Index">Account</a>
                         </div>
-                        @*<div><img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="arrow_down-align" alt="Alternate Text" /></div>*@
+
                     </div>
                 </div>
             </div>
@@ -100,11 +103,11 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".click-down").click(function () {
-            $(".show-links > ul").toggleClass("d-none");
-            $(".click-down").toggleClass("click-down_clicked");
-            $(".show_arrow-down").toggleClass("d-none");
-            $(".show_arrow-up").toggleClass("d-none");
+        $(".dashboard_click-down").click(function () {
+            $(".dashboard_show-links > ul").toggleClass("d-none");
+            $(".dashboard_click-down").toggleClass("click-down_clicked");
+            $(".dashboard_show-links > .show_arrow-down").toggleClass("d-none");
+            $(".dashboard_show-links > .show_arrow-up").toggleClass("d-none");
         })
 
         $(".show_user-links").click(function () {

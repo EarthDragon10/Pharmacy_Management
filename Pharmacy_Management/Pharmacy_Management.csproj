@@ -350,6 +350,11 @@
     <Content Include="Views\Inventary\CreateProduct.cshtml" />
     <Content Include="Views\Inventary\FixLastProducts.cshtml" />
     <Content Include="Views\Inventary\FixSingleProducts.cshtml" />
+    <Content Include="Views\Inventary\ListGroupsMedicine.cshtml" />
+    <Content Include="Views\Inventary\DetailsGroupMedicine.cshtml" />
+    <Content Include="Views\Inventary\CreateGroupMedicine.cshtml" />
+    <Content Include="Views\Inventary\EditGroupMedicine.cshtml" />
+    <Content Include="Views\Inventary\DeleteGroupMedicine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -123,7 +123,7 @@ textarea {
     padding: 10px 30px;
 }
 
-.click-down {
+.dashboard_click-down {
     /*padding: 10px 30px;*/
     cursor: pointer;
 }
@@ -136,7 +136,7 @@ textarea {
     background-color: #009099;
 }
 
-.show-links {
+.dashboard_show-links {
     padding: 5px 30px;
 }
 
