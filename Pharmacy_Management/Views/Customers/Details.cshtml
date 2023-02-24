@@ -5,71 +5,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="vh-100 px-3 py-5">
+    <h2>Details</h2>
 
-<div>
-    <h4>Customers</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Roles.TypeRole)
-        </dt>
+    <div>
+        <h4>Customers</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Roles.TypeRole)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Roles.TypeRole)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Roles.TypeRole)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pwd)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pwd)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CodFisc)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CodFisc)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CodFisc)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CodFisc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UrlImg)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UrlImg)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdCustomer }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCustomer }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
