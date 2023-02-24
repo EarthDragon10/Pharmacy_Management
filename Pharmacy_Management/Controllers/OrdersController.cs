@@ -100,6 +100,7 @@ namespace Pharmacy_Management.Controllers
                 NewPreOrder.UrlImg = medicine.UrlImg;
                 NewPreOrder.TypeProduct = typeProduct.DescTypeProduct;
                 NewPreOrder.TypeMedicine = medicine.TypeMedicine.DescTypeMedicine;
+                NewPreOrder.Price = medicine.price;
                 Orders.PreOrder.PreOrderList.Add(NewPreOrder);
             }
 
@@ -124,6 +125,7 @@ namespace Pharmacy_Management.Controllers
                 order.IdCustomer = Orders.StaticIdCustomer;
                 order.DateOrder = DateTime.Now;
                 order.Quantity = QntyAddedToCart[countProduct];
+                order.TotalPrice = medicineSelected.Price * QntyAddedToCart[countProduct];
                 countProduct++;
 
                 var medicine = db.Medicines.Find(order.IdMedicine);

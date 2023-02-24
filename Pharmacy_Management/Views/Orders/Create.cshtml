@@ -40,8 +40,8 @@
                 <img src="~/Content/Assets/Img/Medicines/@item.UrlImg" class="card-img-top" alt="image of product">
                 <div class="card-body">
                     <h5 class="card-title">@item.NameProduct</h5>
-                    <p class="card-text">Tipo prodotto: @item.TypeProduct</p>
-                    <p class="card-text">Tipo medicinale: @item.TypeMedicine</p>
+                    <p class="card-text">Tipo prodotto: @item.TypeProduct @item.TypeMedicine</p>
+                    <p class="card-text">Prezzo: @item.Price</p>
                     <p>Descrizione: @item.DescriptionUse</p>
                     <p>Seleziona la quantitá desiderata:</p>
                     <select name="QntyAddedToCart" class="form-control btn-primary numMedicineSelected">

@@ -172,6 +172,10 @@
     <Compile Include="Migrations\202302211350026_FixCustomersFields.designer.cs">
       <DependentUpon>202302211350026_FixCustomersFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302241445109_AddedTotalPriceOrder.cs" />
+    <Compile Include="Migrations\202302241445109_AddedTotalPriceOrder.designer.cs">
+      <DependentUpon>202302241445109_AddedTotalPriceOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\CustomRole.cs" />
@@ -384,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202302211350026_FixCustomersFields.resx">
       <DependentUpon>202302211350026_FixCustomersFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302241445109_AddedTotalPriceOrder.resx">
+      <DependentUpon>202302241445109_AddedTotalPriceOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

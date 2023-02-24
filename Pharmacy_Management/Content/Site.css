@@ -140,6 +140,10 @@ textarea {
     padding: 5px 30px;
 }
 
+.inventory_show-links {
+    padding: 5px 30px;
+}
+
 .show-links_clicked {
     transition: all 1s ease;
 }

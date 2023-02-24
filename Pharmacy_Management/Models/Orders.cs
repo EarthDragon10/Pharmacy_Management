@@ -16,6 +16,7 @@ namespace Pharmacy_Management.Models
         public int IdMedicine { get; set; }
 
         public int Quantity { get; set; }
+        public decimal TotalPrice { get; set; }
 
         public int? IdPrescription { get; set; }
 
@@ -44,8 +45,8 @@ namespace Pharmacy_Management.Models
             public string TypeMedicine { set; get; }
             public string DescriptionUse { get; set; }
             public string UrlImg { get; set; }
-
             public int Quantity { get; set; }
+            public decimal Price { get; set; }
 
             public static List<PreOrder> PreOrderList = new List<PreOrder>();
         }
