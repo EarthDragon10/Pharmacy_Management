@@ -5,36 +5,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard</span> > Lista di Ricette Mediche</h1>
+    <h4>Ricette mediche</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Customers.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdentifierPrescription)
-        </th>
-        <th></th>
-    </tr>
+    <a href="~/Pescritions/Create" class="btn btn-success mb-4">+ Nuova Ricetta Medica</a>
+    <table class="table tables_pharmacy blue-border">
+        <tr class="bg-blue">
+            <th>
+                Nome Cliente
+            </th>
+            <th>
+                Identificativo
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customers.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdentifierPrescription)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdPrescription }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdPrescription }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdPrescription })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customers.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentifierPrescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdPrescription }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Dettagli", "Details", new { id = item.IdPrescription }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IdPrescription }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+
+</div>

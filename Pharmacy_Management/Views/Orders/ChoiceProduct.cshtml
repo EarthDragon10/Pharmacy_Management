@@ -65,9 +65,9 @@
                     @Html.DisplayFor(modelItem => item.price)
                 </td>
                 <td>
-                    @if (item.TypeMedicine.RequiredPescrition == true)
+                    @if (item.TypeMedicine.RequiredPescrition == true && ViewBag.ExistingPescrition == false)
                     {
-                        @Html.ActionLink("+ Pescrizione", "Index", "Pescritions", new { id = item.IdMedicine }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("+ Pescrizione", "CreatePescrition", new { id = Pharmacy_Management.Models.Orders.StaticIdCustomer }, new { @class = "btn btn-warning" })
                     }
                     else
                     {
@@ -80,6 +80,6 @@
 
     </table>
     <p>
-        @Html.ActionLink("+ Crea Nuovo Prodotto", "Create", null, new { @class= "btn btn-success mt-4"})
+        @Html.ActionLink("Torna Indietro", "PreviewCustomers", null, new { @class= "btn btn-primary mt-4"})
     </p>
 </div>

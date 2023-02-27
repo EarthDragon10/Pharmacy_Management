@@ -1,0 +1,41 @@
+﻿@model Pharmacy_Management.Models.Pescritions
+
+@{
+    ViewBag.Title = "CreatePescrition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Ordini > Seleziona Cliente > Scegli Il Prodotto</span> > Inserisci la Pescrizione</h1>
+    <p class="mt-4">Inserire la ricetta medica del Cliente</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="d-flex">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+         
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdentifierPrescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdentifierPrescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Salva" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Torna indietro", "ChoiceProduct", null, new { @class = "btn btn-primary mt-4"})
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

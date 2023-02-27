@@ -5,54 +5,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard</span> > Lista di Ordini</h1>
+    <h4>Ordini</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Medicines.DescriptionUse)
-        </th>
-        <th>
-            Autorizzazioni
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOrder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </th>
-        <th></th>
-    </tr>
+    <a href="~/Orders/PreviewCustomers" class="btn btn-success mb-4">+ Effettua nuovo Ordine</a>
+    <table class="table tables_pharmacy blue-border">
+        <tr class="bg-blue">
+            <th>
+                Descrizione d'uso'
+            </th>
+            <th>
+                Autorizzazioni
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Medicines.DescriptionUse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pescritions.IdentifierPrescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdOrder }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdOrder }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdOrder })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicines.DescriptionUse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pescritions.IdentifierPrescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdOrder }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Dettagli", "Details", new { id = item.IdOrder }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IdOrder }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+
+</div>

@@ -6,57 +6,56 @@
 }
 
 <div class="vh-100 px-3 py-5">
-    <h2>Delete</h2>
+    <h1><span class="text-grey">Dashboard > Lista Ricette Mediche</span> > Dettagli</h1>
+    <h4>Dettagli Cliente</h4>
 
     <h3>Are you sure you want to delete this?</h3>
     <div>
-        <h4>Customers</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Roles.TypeRole)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Roles.TypeRole)
-            </dd>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Nome Cliente</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.FirstName</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Cognome Cliente</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.LastName</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CodFisc)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CodFisc)
-            </dd>
-
-
-        </dl>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Codice Fiscale</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.CodFisc</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+    <div class="form-actions no-color mt-4">
+        <input type="submit" value="Cancella" class="btn btn-success" />
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary" })
+    </div>
         }
     </div>
 
 </div>
+

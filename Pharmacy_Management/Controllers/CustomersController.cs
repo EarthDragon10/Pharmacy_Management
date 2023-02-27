@@ -48,7 +48,7 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCustomer,Username,FirstName,LastName,Pwd,CodFisc,UrlImg,IdRole")] Customers customers)
+        public ActionResult Create([Bind(Include = "IdCustomer,FirstName,LastName,CodFisc,IdRole")] Customers customers)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCustomer,Username,FirstName,LastName,Pwd,CodFisc,UrlImg,IdRole")] Customers customers)
+        public ActionResult Edit([Bind(Include = "IdCustomer,FirstName,LastName,CodFisc,IdRole")] Customers customers)
         {
             if (ModelState.IsValid)
             {

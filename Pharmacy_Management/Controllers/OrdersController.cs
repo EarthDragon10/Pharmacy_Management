@@ -49,6 +49,17 @@ namespace Pharmacy_Management.Controllers
             var medicines = db.Medicines.Include(m => m.Drawers).Include(m => m.SupplierCompanies).Include(m => m.TypeMedicine).Include(m => m.TypeProduct);
             var order = new Orders();
             Orders.StaticIdCustomer = id;
+
+            var pescritions = db.Pescritions.Where(p => p.IdCustomer == id).ToList();
+
+            if(pescritions.Count() > 0)
+            {
+                ViewBag.ExistingPescrition = true;
+            } else
+            {
+                ViewBag.ExistingPescrition = false;
+            }
+
             //Orders.ListIdCustomer.Add(id);
             return View(medicines.ToList());
         }
@@ -56,17 +67,17 @@ namespace Pharmacy_Management.Controllers
         // GET: Customers/Create
         public ActionResult CreateCustomers()
         {
-            ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole");
+            
             return View();
         }
 
-        // POST: Customers/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateCustomers([Bind(Include = "IdCustomer,Username,FirstName,LastName,Pwd,CodFisc, IdRole")] Customers customers)
         {
+            customers.IdRole = 3;
+
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customers);
@@ -79,23 +90,27 @@ namespace Pharmacy_Management.Controllers
         }
 
         public ActionResult CreatePescrition()
-        {
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName");
+        {          
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePrescrition([Bind(Include = "IdPrescription,IdentifierPrescription,IdCustomer")] Pescritions pescritions)
+        public ActionResult CreatePescrition([Bind(Include = "IdPrescription,IdentifierPrescription, IdCustomer")] Pescritions pescritions)
         {
-            if (ModelState.IsValid)
+            if (Orders.StaticIdCustomer != null)
             {
+                pescritions.IdCustomer = (int)Orders.StaticIdCustomer;
+            }
+            
+
+            if (ModelState.IsValid)
+            {               
                 db.Pescritions.Add(pescritions);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ChoiceProduct", new { id = Orders.StaticIdCustomer});
             }
-
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName", pescritions.IdCustomer);
+          
             return View(pescritions);
         }
         // GET: Orders/Create
@@ -131,9 +146,6 @@ namespace Pharmacy_Management.Controllers
             return View();
         }
 
-        // POST: Orders/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdOrder, Quantity,IdPrescription")] List<int> QntyAddedToCart)
@@ -143,7 +155,7 @@ namespace Pharmacy_Management.Controllers
             {
                 Orders order = new Orders();
                 order.IdMedicine = medicineSelected.IdMedicine;
-                order.IdCustomer = Orders.StaticIdCustomer;
+                order.IdCustomer = (int)Orders.StaticIdCustomer;
                 order.DateOrder = DateTime.Now;
                 order.Quantity = QntyAddedToCart[countProduct];
                 order.TotalPrice = medicineSelected.Price * QntyAddedToCart[countProduct];
@@ -186,18 +198,17 @@ namespace Pharmacy_Management.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", orders.IdCustomer);
-            ViewBag.IdMedicine = new SelectList(db.Medicines, "IdMedicine", "DescriptionUse", orders.IdMedicine);
-            ViewBag.IdPrescription = new SelectList(db.Pescritions, "IdPrescription", "IdPrescription", orders.IdPrescription);
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Firstname", orders.IdCustomer);
+            ViewBag.IdMedicine = new SelectList(db.Medicines, "IdMedicine", "NameMedicine", orders.IdMedicine);
+            ViewBag.IdPrescription = new SelectList(db.Pescritions, "IdPrescription", "IdentifierPrescription", orders.IdPrescription);
             return View(orders);
         }
 
         // POST: Orders/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdOrder,IdCustomer,IdMedicine,Quantity,IdPrescription,DateOrder")] Orders orders)
+        public ActionResult Edit([Bind(Include = "IdOrder,IdCustomer,IdMedicine,Quantity,IdPrescription,DateOrder, TotalPrice")] Orders orders)
         {
             if (ModelState.IsValid)
             {

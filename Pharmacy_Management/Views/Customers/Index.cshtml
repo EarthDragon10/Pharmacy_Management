@@ -6,14 +6,14 @@
 }
 
 <div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard</span> > Lista Clienti</h1>
+    <h4>Elenco dei Clienti</h4>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
+    <a href="~/Customers/Create" class="btn btn-success mb-4">+ Nuovo Cliente</a>
+    <table class="table tables_pharmacy blue-border">
+        <tr class="bg-blue">
             <th>
-                @Html.DisplayNameFor(model => model.Roles.TypeRole)
+                Ruolo
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -43,12 +43,13 @@
                     @Html.DisplayFor(modelItem => item.CodFisc)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdCustomer }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdCustomer }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdCustomer })
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdCustomer }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Dettagli", "Details", new { id = item.IdCustomer }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IdCustomer }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }
 
     </table>
+
 </div>

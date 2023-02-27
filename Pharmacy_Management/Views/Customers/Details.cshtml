@@ -6,51 +6,47 @@
 }
 
 <div class="vh-100 px-3 py-5">
-    <h2>Details</h2>
-
+    <h1><span class="text-grey">Dashboard > Lista Ricette Mediche</span> > Dettagli</h1>
+    <h4>Dettagli Cliente</h4>
     <div>
-        <h4>Customers</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Roles.TypeRole)
-            </dt>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Nome Cliente</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.FirstName</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Cognome Cliente</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.LastName</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Roles.TypeRole)
-            </dd>
-
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CodFisc)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CodFisc)
-            </dd>
-
-        </dl>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Codice Fiscale</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.CodFisc</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdCustomer }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Modifica", "Edit", new { id = Model.IdCustomer }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary" })
     </p>
+
 </div>
+

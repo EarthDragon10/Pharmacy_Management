@@ -364,6 +364,7 @@
     <Content Include="Views\Inventary\CreateGroupMedicine.cshtml" />
     <Content Include="Views\Inventary\EditGroupMedicine.cshtml" />
     <Content Include="Views\Inventary\DeleteGroupMedicine.cshtml" />
+    <Content Include="Views\Orders\CreatePescrition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

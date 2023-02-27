@@ -5,31 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard > Lista Ricette Mediche</span> > Dettagli</h1>
+    <h4>Dettagli di una Ricette Mediche</h4>
+    <div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Nome Cliente</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.Customers.FirstName</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Identificativo della Pescrizione</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.IdentifierPrescription</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div>
-    <h4>Pescritions</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Customers.FirstName)
-        </dt>
+    </div>
+    <p class="mt-3">
+        @Html.ActionLink("Modifica", "Edit", new { id = Model.IdPrescription }, new { @class= "btn btn-warning"}) 
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary"})
+    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Customers.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdentifierPrescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdentifierPrescription)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPrescription }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

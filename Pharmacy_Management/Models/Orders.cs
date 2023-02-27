@@ -32,8 +32,8 @@ namespace Pharmacy_Management.Models
 
         public virtual Pescritions Pescritions { get; set; }
 
-        public static int StaticIdCustomer { get; set; }
-        public static int StaticIdMedicine { get; set; }
+        public static int? StaticIdCustomer { get; set; }
+        public static int? StaticIdMedicine { get; set; }
 
         public static List<int> ListIdCustomer = new List<int>();
         public static List<int> ListIdMedicine = new List<int>();

@@ -5,48 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard > Lista di Ordini</span> > Modifica Ordini</h1>
+    <h4>Ordini</h4>
 
-<div>
-    <h4>Orders</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Medicines.DescriptionUse)
-        </dt>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Prodotto Ordinato</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.Medicines.NameMedicine</h5>
+                            <p class="card-text">Denominativo</p>
+                        </div>
+                        <div>
+                            <h5 class="card-title">@Model.Medicines.DescriptionUse</h5>
+                            <p class="card-text">Descrizione d'uso</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Dati Ordine</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.Quantity</h5>
+                            <p class="card-text">Quantitá Ordinata</p>
+                        </div>
+                        <div>
+                            <h5 class="card-title">@Model.DateOrder</h5>
+                            <p class="card-text">Data Ordine</p>
+                        </div>
+                        <div>
+                            <h5 class="card-title">@Model.TotalPrice</h5>
+                            <p class="card-text">Totale Incassato</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-3">
+        @Html.ActionLink("Modifica", "Edit", new { id = Model.IdOrder }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary" })
+    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Medicines.DescriptionUse)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pescritions.IdPrescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pescritions.IdPrescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOrder)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOrder }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
