@@ -20,6 +20,7 @@ namespace Pharmacy_Management.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Tipologia Prodotto")]
         public string DescTypeProduct { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

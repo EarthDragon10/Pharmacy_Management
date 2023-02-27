@@ -2,10 +2,17 @@
 
 <div class="card">
     <div class="card-header">
-        Inventario <a href="~/Inventary/Index">vai all'inventario</a>
+        <h4><span class="fw-bold me-5">Inventario</span> <a class="text-grey anchor-style" href="~/Inventary/Index">Vai all'inventario >></a></h4> 
     </div>
-    <div class="card-body">
-            <p class="card-text">Numero totale di medicine: @ViewBag.Stock</p>
-            <p class="card-text">Categorie Medicine: @ViewBag.Stock</p>
+    <div class="card-body d-flex justify-content-between">
+        <div class="d-flex flex-column">
+            <h4 class="fw-bold">@ViewBag.MedicinesCount</h4>
+            <p class="card-text">Numero totale di medicine</p>
+        </div>
+
+        <div class="d-flex flex-column">
+            <h4 class="fw-bold">@ViewBag.MedicineGroups</h4>
+            <p class="card-text">Categorie Medicine</p>
+        </div>
     </div>
 </div>

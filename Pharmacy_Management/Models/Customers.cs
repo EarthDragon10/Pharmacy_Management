@@ -25,10 +25,12 @@ namespace Pharmacy_Management.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Nome")]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Cognome")]
         public string LastName { get; set; }
 
         //[Required]
@@ -37,6 +39,7 @@ namespace Pharmacy_Management.Models
 
         [Required]
         [StringLength(16)]
+        [Display(Name = "Codice Fiscale")]
         public string CodFisc { get; set; }
 
         //public string UrlImg { get; set; }

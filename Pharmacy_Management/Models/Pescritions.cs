@@ -16,7 +16,7 @@ namespace Pharmacy_Management.Models
 
         [Key]
         public int IdPrescription { get; set; }
-
+        [Display(Name = "Identificativo Ricetta Medica")]
         public int IdentifierPrescription { get; set; }
 
         public int IdCustomer { get; set; }

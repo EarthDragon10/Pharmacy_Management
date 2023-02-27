@@ -49,6 +49,14 @@ textarea {
     max-width: 300px;
 }
 
+.anchor-style {
+    text-decoration: none;
+}
+
+.anchor-style:hover {
+    color: black;
+}
+
 /* LOGIN/REGISTRATION */
 
 .bg-login {
@@ -328,6 +336,13 @@ textarea {
     border-top: 2px solid #F0483E;
 }
 
+.yellow-border {
+    border: 2px solid #FED600;
+}
+
+.yellow_top-border {
+    border-top: 2px solid #FED600;
+}
 
 .bg-blue {
     background-color: rgba(3, 169, 245,0.3);
@@ -339,6 +354,10 @@ textarea {
 
 .bg-red {
     background-color: rgba(240, 72, 62, 0.3);
+}
+
+.bg-yellow {
+    background-color: rgba(254, 214, 0, 0.3);
 }
 
 .inventory_box-content {

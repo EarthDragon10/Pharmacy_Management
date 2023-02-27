@@ -2,6 +2,7 @@ namespace Pharmacy_Management.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -17,15 +18,17 @@ namespace Pharmacy_Management.Models
 
         [Key]
         public int IdMedicine { get; set; }
+        [Display(Name = "Nome Della Medicina")]
         [StringLength(30)]
         public string NameMedicine { get; set; }
 
         public int IdTypeProduct { get; set; }
 
         public int? IdTypeMedicine { get; set; }
-
+        [Display(Name = "Per cosa usare")]
         [Required]
         public string DescriptionUse { get; set; }
+        [Display(Name = "Immagine")]
         public string UrlImg { get; set; }
 
         [NotMapped()]
@@ -33,10 +36,12 @@ namespace Pharmacy_Management.Models
 
         public int IdSupplierCompanies { get; set; }
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
-  
+
+        [Display(Name = "Prezzo")]
         public decimal price { get; set; }
 
         public int IdDrawer { get; set; }
+        [Display(Name = "Giacenza")]
         public int Stock { get; set; }
 
         public virtual Drawers Drawers { get; set; }

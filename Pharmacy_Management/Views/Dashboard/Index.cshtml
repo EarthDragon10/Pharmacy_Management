@@ -4,18 +4,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="vh-100 px-3 py-5">
+<div class="vh-50 px-3 py-5">
+    @*<div class="row">
+            <div class="d-flex">
+                <input class="form-control" id="InputSearch" name="InputCodFisc" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" name="InputCodFisc" id="BtnSearch">Search</button>
+            </div>
+        </div>
+        <div class="row">
+            <div id="resultSearchByCodFisc" class="d-flex flex-wrap justify-content-around align-content-around align-items-center"></div>
+        </div>*@
     <div class="row">
-        <div class="d-flex">
-            <input class="form-control" id="InputSearch" name="InputCodFisc" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" name="InputCodFisc" id="BtnSearch">Search</button>
+        <h1>Dashboard</h1>
+        <p class="text-grey fw-bold">Un sommario veloce delle funzioni e dell'inventario</p>
+    </div>
+
+    <div class="row">
+
+        <div class="d-flex justify-content-evenly align-content-center gap-5 my-3">
+
+            <div class="inventory-box yellow-border">
+                <div class="inventory_box-content">
+                    <img src="~/Content/Assets/Img/Icons/total_payements.png" alt="Alternate Text" />
+                    <p class="fw-bold">@ViewBag.TotalOrder</p>
+                    <p>Totale Incasso</p>
+                </div>
+                <div class="inventory_box-subLink yellow_top-border bg-yellow">
+                    <a class="inventory_link" href="~/Orders/Index">Vai ai Dettagli Ordini >></a>
+                </div>
+            </div>
+
+            <div class="inventory-box blue-border">
+                <div class="inventory_box-content">
+                    <img src="~/Content/Assets/Img/Icons/icon_medicinal-box.png" alt="Alternate Text" />
+                    <p class="fw-bold">@ViewBag.MedicinesCount</p>
+                    <p>Quantitá di Medicine</p>
+                </div>
+                <div class="inventory_box-subLink blue_top-border bg-blue">
+                    <a class="inventory_link" href="~/Inventary/ListMedicines">Vai Alla Lista Completa >></a>
+                </div>
+            </div>
+
+            <div class="inventory-box red-border">
+                <div class="inventory_box-content">
+                    <img src="~/Content/Assets/Img/Icons/inventory_danger-medicines.png" alt="Alternate Text" />
+                    <p class="fw-bold">@ViewBag.FinishedMedicinesCount</p>
+                    <p>Carenze di Medicine</p>
+                </div>
+                <div class="inventory_box-subLink red_top-border bg-red">
+                    <a class="inventory_link" href="~/Inventary/FixLastProducts">Risolvi >></a>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="vh-50">
     <div class="row">
-        <div id="resultSearchByCodFisc" class="d-flex flex-wrap justify-content-around align-content-around align-items-center"></div>
-    </div>
-    <div class="row">
-        <div class="d-flex flex-wrap justify-content-around align-content-around align-items-center">
+        <div class="d-flex bg-white flex-wrap justify-content-evenly align-content-center align-items-center px-3 py-5">
             @{
                 Html.RenderAction("InventaryPartialView");
                 Html.RenderAction("PharmacyPartialView");

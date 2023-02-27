@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
@@ -16,38 +17,55 @@ namespace Pharmacy_Management.Controllers
         private ModelDbContext DbContext = new ModelDbContext();
         // GET: Dashboard
         public ActionResult Index()
-        {          
+        {
+            var finishedMedicines = DbContext.Medicines.Where(m => m.Stock <= 5);
+            ViewBag.FinishedMedicinesCount = finishedMedicines.Count();
+            var medicines = DbContext.Medicines.Where(m => m.Stock > 0).ToList();
+            int TotalStock = 0;
+            foreach (var item in medicines)
+            {
+                TotalStock += item.Stock;
+            }
+
+            ViewBag.MedicinesCount = TotalStock;
+
+            decimal TotalPayements = 0;
+            var OrderPays = DbContext.Orders.ToList();
+            foreach (var item in OrderPays)
+            {
+                TotalPayements += item.TotalPrice;
+            }
+            ViewBag.TotalOrder = TotalPayements;
+            
             return View();
         }
 
         public ActionResult InventaryPartialView() {
-            var medicines = DbContext.Medicines.ToList();
-
-            int totalMedicines = 0;
-            foreach (var medicine in medicines)
+            var medicines = DbContext.Medicines.Where(m => m.Stock > 0).ToList();
+            int TotalStock = 0;
+            foreach (var item in medicines)
             {
-                if(medicine.DescriptionUse != null)
-                {
-                    totalMedicines += medicine.Stock;
-                }            
-            }  
-            ViewBag.Stock = totalMedicines;
+                TotalStock += item.Stock;
+            }
 
-            ViewBag.MedicineGroupsCount = DbContext.TypeProduct.Count();
+            ViewBag.MedicinesCount = TotalStock;
+            ViewBag.MedicineGroups = DbContext.TypeProduct.Where(p => p.DescTypeProduct != null).Count();
             return PartialView(medicines);
         }
 
         public ActionResult PharmacyPartialView()
         {
             ViewBag.SuppliersCount = DbContext.SupplierCompanies.Where(s => s.NameCompany != null).Count();
-            ViewBag.Employee = DbContext.Employees.Count();
+            ViewBag.Employee = DbContext.Employees.Where(e => e.Pwd != null).Count();
             return PartialView();
         }
 
         public ActionResult CustomersPartialView()
         {
             var customers = DbContext.Customers;
-            ViewBag.Customers = customers.Where(c => c.CodFisc != null).Count();
+            ViewBag.Customers = customers.Where(c => c.FirstName != "").Count();
+            var PrescritionCustomersCount = DbContext.Pescritions.Where(p => p.IdentifierPrescription != 0).Count();
+            ViewBag.PrescritionsCount = PrescritionCustomersCount;
             return PartialView();
         }
 
@@ -55,11 +73,16 @@ namespace Pharmacy_Management.Controllers
         {
             var orders = DbContext.Orders.Include(o => o.Quantity);
             ViewBag.OrderTotal = orders.Where(o => o.Medicines != null).Count();
-            return PartialView(); 
-        }
 
-        public ActionResult RolesPartialView() {
-            return PartialView(DbContext.Roles);
+            decimal TotalPayements = 0;
+            var OrderPays = DbContext.Orders.ToList();
+            foreach (var item in OrderPays)
+            {
+                TotalPayements += item.TotalPrice;
+            }
+            ViewBag.TotalOrder = TotalPayements;
+
+            return PartialView(); 
         }
 
         // Funzioni ricerca in Jquery

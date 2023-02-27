@@ -16,7 +16,7 @@ namespace Pharmacy_Management.Models
 
         [Key]
         public int IdDrawer { get; set; }
-
+        [Display(Name = "Numero Cassetto")]
         public int Identifier { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

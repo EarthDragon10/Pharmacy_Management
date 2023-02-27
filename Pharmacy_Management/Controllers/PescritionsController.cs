@@ -39,7 +39,7 @@ namespace Pharmacy_Management.Controllers
         // GET: Pescritions/Create
         public ActionResult Create()
         {
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username");
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Pharmacy_Management.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", pescritions.IdCustomer);
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName", pescritions.IdCustomer);
             return View(pescritions);
         }
 
@@ -73,7 +73,7 @@ namespace Pharmacy_Management.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", pescritions.IdCustomer);
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName", pescritions.IdCustomer);
             return View(pescritions);
         }
 
@@ -90,7 +90,7 @@ namespace Pharmacy_Management.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "Username", pescritions.IdCustomer);
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName", pescritions.IdCustomer);
             return View(pescritions);
         }
 

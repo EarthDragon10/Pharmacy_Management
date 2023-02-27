@@ -14,14 +14,16 @@ namespace Pharmacy_Management.Models
         public int IdCustomer { get; set; }
 
         public int IdMedicine { get; set; }
-
+        [Display(Name = "Quantitá")]
         public int Quantity { get; set; }
+        [Display(Name = "Prezzo Totale")]
         public decimal TotalPrice { get; set; }
 
         public int? IdPrescription { get; set; }
 
         [Column(TypeName = "date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data Ordine")]
         public DateTime DateOrder { get; set; }
 
         public virtual Customers Customers { get; set; }

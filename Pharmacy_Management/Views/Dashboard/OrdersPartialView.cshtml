@@ -1,9 +1,16 @@
-﻿<div class="card">
+﻿<div class="card my-3">
     <div class="card-header">
-        Ordini <a href="~/Orders/Index">vai agli ordini</a>
+        <h4><span class="fw-bold me-5">Ordini</span> <a class="text-grey anchor-style" href="~/Inventary/Index">Vai agli Ordini >></a></h4>
     </div>
-    <div class="card-body">
-        <p class="card-text">Numero totale di Ordini: @ViewBag.OrderTotal</p>
+    <div class="card-body d-flex justify-content-between">
+        <div class="d-flex flex-column">
+            <h4 class="fw-bold">@ViewBag.OrderTotal</h4>
+            <p class="card-text">Numero totale di Ordini</p>
+        </div>
+
+        <div class="d-flex flex-column">
+            <h4 class="fw-bold">@ViewBag.TotalOrder</h4>
+            <p class="card-text">Totale Incasso</p>
+        </div>
     </div>
 </div>
-

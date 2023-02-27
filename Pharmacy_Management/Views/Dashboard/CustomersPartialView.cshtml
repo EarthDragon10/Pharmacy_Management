@@ -1,8 +1,16 @@
 ﻿<div class="card">
     <div class="card-header">
-        Clienti <a href="~/Customers/Index">vai alla gestione</a>
+        <h4><span class="fw-bold me-5">Clienti</span> <a class="text-grey anchor-style" href="~/Customers/Index">Vai alla lista clienti >></a></h4>
     </div>
-    <div class="card-body">
-        <p class="card-text">Numero totale di Clienti: @ViewBag.Customers</p>
+    <div class="card-body d-flex justify-content-between">
+        <div class="d-flex flex-column">
+            <h4 class="fw-bold">@ViewBag.Customers</h4>
+            <p class="card-text">Numero totale di clienti</p>
+        </div>
+
+        <div class="d-flex flex-column">
+            <h4 class="fw-bold">@ViewBag.PrescritionsCount</h4>
+            <p class="card-text">Numero Totale di Prescrizioni</p>
+        </div>
     </div>
 </div>

@@ -176,6 +176,10 @@
     <Compile Include="Migrations\202302241445109_AddedTotalPriceOrder.designer.cs">
       <DependentUpon>202302241445109_AddedTotalPriceOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302270316322_AddedBoolControlPescrition.cs" />
+    <Compile Include="Migrations\202302270316322_AddedBoolControlPescrition.designer.cs">
+      <DependentUpon>202302270316322_AddedBoolControlPescrition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\CustomRole.cs" />
@@ -206,6 +210,7 @@
     <Content Include="Content\Assets\Img\Icons\Reports.png" />
     <Content Include="Content\Assets\Img\Icons\sfondo1.jpg" />
     <Content Include="Content\Assets\Img\Icons\sfondo2.jpg" />
+    <Content Include="Content\Assets\Img\Icons\total_payements.png" />
     <Content Include="Content\Assets\Img\Icons\user-icon.png" />
     <Content Include="Content\Assets\Img\Icons\User.png" />
     <Content Include="Content\Assets\Img\Icons\user_btn.png" />
@@ -391,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202302241445109_AddedTotalPriceOrder.resx">
       <DependentUpon>202302241445109_AddedTotalPriceOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302270316322_AddedBoolControlPescrition.resx">
+      <DependentUpon>202302270316322_AddedBoolControlPescrition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

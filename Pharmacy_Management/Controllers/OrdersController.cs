@@ -77,6 +77,27 @@ namespace Pharmacy_Management.Controllers
             ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", customers.IdRole);
             return View(customers);
         }
+
+        public ActionResult CreatePescrition()
+        {
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePrescrition([Bind(Include = "IdPrescription,IdentifierPrescription,IdCustomer")] Pescritions pescritions)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Pescritions.Add(pescritions);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.IdCustomer = new SelectList(db.Customers, "IdCustomer", "FirstName", pescritions.IdCustomer);
+            return View(pescritions);
+        }
         // GET: Orders/Create
         public ActionResult Create(int id)
         {

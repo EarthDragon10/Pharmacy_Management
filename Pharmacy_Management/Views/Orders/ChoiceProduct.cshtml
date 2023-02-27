@@ -5,71 +5,81 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Drawers.IdDrawer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierCompanies.NameCompany)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeMedicine.DescTypeMedicine)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeProduct.DescTypeProduct)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescriptionUse)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UrlImg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Drawers.IdDrawer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupplierCompanies.NameCompany)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeMedicine.DescTypeMedicine)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeProduct.DescTypeProduct)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescriptionUse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UrlImg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.ActionLink("Vai al carrello", "Create", new { id = item.IdMedicine })
-            </td>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Ordini > Crea Ordine</span> > Scegli Il Prodotto</h1>
+    <p class="mt-4">Scegli uno o piú prodotti qui elencati, o inseriscine uno nuovo</p>
+    <table class="table tables_pharmacy yellow-border">
+        <tr class="bg-yellow mt-4">
+            <th>
+                Numero Cassetto
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierCompanies.NameCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeMedicine.DescTypeMedicine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeProduct.DescTypeProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionUse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlImg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Drawers.Identifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierCompanies.NameCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeMedicine.DescTypeMedicine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeProduct.DescTypeProduct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionUse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UrlImg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @if (item.TypeMedicine.RequiredPescrition == true)
+                    {
+                        @Html.ActionLink("+ Pescrizione", "Index", "Pescritions", new { id = item.IdMedicine }, new { @class = "btn btn-warning" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Vai al carrello", "Create", new { id = item.IdMedicine }, new { @class = "btn btn-warning" })
+                    }
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("+ Crea Nuovo Prodotto", "Create", null, new { @class= "btn btn-success mt-4"})
+    </p>
+</div>
