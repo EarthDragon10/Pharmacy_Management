@@ -48,17 +48,37 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,UrlImg,IdRole")] Employees employees)
+        public ActionResult Create([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,UrlImg,IdRole")] Employees employee)
         {
+
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employees);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (employee.FileImg != null)
+                {
+                    string Path = Server.MapPath("~/Content/Assets/Img/Employees/" + employee.FileImg.FileName);
+                    employee.FileImg.SaveAs(Path);
+                    employee.UrlImg = employee.FileImg.FileName;
+                    db.Employees.Add(employee);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Error = "Alcuni campi non sono stati completati!";
+                    return View();
+                }
             }
+            ViewBag.IdRole = new SelectList(DbContext.Roles, "IdRole", "TypeRole", employee.IdRole);
+            return View(employee);
+            //if (ModelState.IsValid)
+            //{
+            //    db.Employees.Add(employees);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
 
-            ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", employees.IdRole);
-            return View(employees);
+            //ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", employees.IdRole);
+            //return View(employees);
         }
 
         // GET: Employees/Edit/5
