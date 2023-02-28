@@ -52,7 +52,7 @@
                     @Html.DisplayFor(modelItem => item.Pwd)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UrlImg)
+                    <img src="~/Content/Assets/Img/Employees/@item.UrlImg" class="img-px" alt="Alternate Text" />
                 </td>
                 <td>
                     @Html.ActionLink("Modifica", "Edit", new { id = item.IdEmployee }, new { @class = "btn btn-warning" }) 

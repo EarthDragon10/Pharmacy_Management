@@ -20,7 +20,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#BtnDateSearch").click(function () {
-            alert("Funziona il datapicker");
             let DataPicker = $("#DateSearch").val();
 
             $.ajax({
@@ -38,7 +37,6 @@
                                 "<div class=\"card-body\">" +
                                 "<h5 class=\"card-title\">" + valore.NameMedicine + "</h5>" +
                                 "<p class=\"card-text\">Quantitá ordinata:" + valore.Quantity + "</p>" +
-                                "<p class=\"card-text\">Data:" + valore.DateOrder + "</p>" +
                                 "<a href=\"../Inventary/DetailsMedicine/" + valore.IdMedicine + "\" class=\"btn btn-warning\">Dettagli Medicina</a>" +
                                 "</div>" +
                                 "</div>")

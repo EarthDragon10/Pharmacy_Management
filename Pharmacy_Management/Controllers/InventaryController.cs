@@ -90,7 +90,7 @@ namespace Pharmacy_Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditMedicine([Bind(Include = "NameMedicine,price,IdMedicine,IdTypeProduct,IdTypeMedicine,DescriptionUse,UrlImg,IdSupplierCompanies,IdDrawer,Stock")] Medicines medicines)
+        public ActionResult EditMedicine([Bind(Include = "NameMedicine,price,IdMedicine,IdTypeProduct,IdTypeMedicine,DescriptionUse,FileImg, IdSupplierCompanies,IdDrawer,Stock")] Medicines medicines, HttpPostedFileBase FileUpload)
         {
             if (ModelState.IsValid == true && medicines.FileImg != null)
             {

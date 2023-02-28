@@ -10,7 +10,7 @@ using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class EmployeesController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
@@ -49,7 +49,7 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,UrlImg,IdRole")] Employees employee)
+        public ActionResult Create([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,FileImg,IdRole")] Employees employee)
         {
 
             if (ModelState.IsValid)
@@ -94,16 +94,16 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,IdRole")] Employees employees, HttpPostedFileBase img)
+        public ActionResult Edit([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,FileImg, IdRole")] Employees employees)
         {
             if (ModelState.IsValid)
             {
                 Employees employeeDb = db.Employees.Find(employees.IdEmployee);
 
-                if(img != null)
+                if(employees.FileImg != null)
                 {
-                    employeeDb.UrlImg = img.FileName;
-                    img.SaveAs(Server.MapPath("~/Content/Assets/Img/Employees/" + img.FileName));
+                    employeeDb.UrlImg = employees.FileImg.FileName;
+                    employees.FileImg.SaveAs(Server.MapPath("~/Content/Assets/Img/Employees/" + employees.FileImg.FileName));
                 }
 
                 employeeDb.Username = employees.Username;
@@ -121,6 +121,7 @@ namespace Pharmacy_Management.Controllers
         }
 
         // GET: Employees/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

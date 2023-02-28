@@ -25,6 +25,10 @@ ol, ul {
     padding: 0;
 }
 
+.img-px {
+    width: 60px;
+}
+
 img, svg {
     vertical-align: baseline;
 }
@@ -151,14 +155,17 @@ textarea {
 
 .dashboard_show-links {
     padding: 5px 30px;
+    line-height: 3rem;
 }
 
 .inventory_show-links {
     padding: 5px 30px;
+    line-height: 3rem;
 }
 
 .search_show-links {
     padding: 5px 30px;
+    line-height: 3rem;
 }
 
 .show-links_clicked {

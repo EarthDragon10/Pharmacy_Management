@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace Pharmacy_Management.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         // GET: Account

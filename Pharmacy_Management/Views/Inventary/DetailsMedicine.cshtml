@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="vh-100 px-3 py-5 ga-5">
-    <h1><span class="text-grey">Inventario > Lista di Medicine</span> > @ViewBag.NameProduct <img src="~/Content/Assets/Img/Medicines/@Model.UrlImg" alt="Alternate Text" /></h1>
+    <h1><span class="text-grey">Inventario > Lista di Medicine</span> > @ViewBag.NameProduct <img src="~/Content/Assets/Img/Medicines/@Model.UrlImg" class="img-px" alt="Alternate Text" /></h1>
     <p>Medicine dispinibili nei casetti.</p>
 
     <a href="~/Inventary/EditMedicine/@Model.IdMedicine" class="btn btn-primary mb-3">Modifica Medicinale</a>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
- 
+
         <div class="col">
             <div class="card">
                 <h5 class="card-header text-center">Tipo e Autorizzazioni</h5>
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-      
+
     </div>
 
     <div class="row">
@@ -68,10 +68,13 @@
                     </div>
                 </div>
             </div>
-        </div>     
+        </div>
     </div>
 
     <div class="row">
-        @Html.ActionLink("Cancella Prodotto", "DeleteProduct", new { id = Model.IdMedicine}, new { @class = "btn btn-danger"})
+        @Html.ActionLink("Cancella Prodotto", "DeleteProduct", new { id = Model.IdMedicine }, new { @class = "btn btn-danger" })
+    </div>
+    <div class="row">
+        @Html.ActionLink("Torna", "DeleteProduct", new { id = Model.IdMedicine }, new { @class = "btn btn-danger" })
     </div>
 </div>

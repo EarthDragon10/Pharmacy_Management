@@ -16,13 +16,15 @@ namespace Pharmacy_Management.Models
         public int IdMedicine { get; set; }
         [Display(Name = "Quantitá")]
         public int Quantity { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         [Display(Name = "Prezzo Totale")]
         public decimal TotalPrice { get; set; }
 
         public int? IdPrescription { get; set; }
-
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Column(TypeName = "date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data Ordine")]
         public DateTime DateOrder { get; set; }
 
