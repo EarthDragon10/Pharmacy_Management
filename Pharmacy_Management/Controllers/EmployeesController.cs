@@ -10,6 +10,7 @@ using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class EmployeesController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
@@ -70,15 +71,6 @@ namespace Pharmacy_Management.Controllers
             }
             ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", employee.IdRole);
             return View(employee);
-            //if (ModelState.IsValid)
-            //{
-            //    db.Employees.Add(employees);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", employees.IdRole);
-            //return View(employees);
         }
 
         // GET: Employees/Edit/5
@@ -102,11 +94,25 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,UrlImg,IdRole")] Employees employees)
+        public ActionResult Edit([Bind(Include = "IdEmployee,Username,FirstName,LastName,Pwd,IdRole")] Employees employees, HttpPostedFileBase img)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employees).State = EntityState.Modified;
+                Employees employeeDb = db.Employees.Find(employees.IdEmployee);
+
+                if(img != null)
+                {
+                    employeeDb.UrlImg = img.FileName;
+                    img.SaveAs(Server.MapPath("~/Content/Assets/Img/Employees/" + img.FileName));
+                }
+
+                employeeDb.Username = employees.Username;
+                employeeDb.FirstName = employees.FirstName;
+                employeeDb.LastName = employees.LastName;
+                employeeDb.Pwd = employees.Pwd;
+                employeeDb.IdRole= employees.IdRole;
+
+                db.Entry(employeeDb).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

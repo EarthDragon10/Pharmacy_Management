@@ -79,11 +79,22 @@
                         </ul>
                     </div>
 
-                    <div class="d-flex justify-content-between align-content-center w-100 sidenav_row-spacing">
+                    <div class="d-flex justify-content-between search_clicked-style align-content-center w-100 sidenav_row-spacing">
+                        <div><img src="~/Content/Assets/Img/Icons/search.png" alt="Alternate Text" /> <a href="~/ResultSearch/Index">Ricerca</a></div>
                         <div>
-                            <img src="~/Content/Assets/Img/Icons/Reports.png" alt="Alternate Text" /> <a href="#">Statistiche</a>
+                            <img src="~/Content/Assets/Img/Icons/Arrow-down.png" class="search_click-down arrow_down-align show_arrow-down" id="search-arrow-down" alt="Alternate Text" />
+                            <img src="~/Content/Assets/Img/Icons/arrow-up.png" class="search_click-down arrow_down-align show_arrow-up d-none" id="search-arrow-up" alt="Alternate Text" />
                         </div>
                     </div>
+
+                    <div class="search_show-links">
+                        <ul class="d-none">
+                            <li><a href="~/ResultSearch/SearchByCodFisc">Per Codice Fiscale</a></li>
+                            <li><a href="~/ResultSearch/SearchByDate">Per Data</a></li>
+                        </ul>
+                    </div>
+
+ 
                     <div class="d-flex justify-content-between align-content-center w-100 sidenav_row-spacing">
                         <div>
                             <img src="~/Content/Assets/Img/Icons/User.png" alt="Alternate Text" /> <a href="~/Employees/Index">Accounts</a>
@@ -115,6 +126,13 @@
             $(".inventory_clicked-style").toggleClass("click-down_clicked");
             $("#inventory-arrow-up").toggleClass("d-none");
             $("#inventory-arrow-down").toggleClass("d-none");
+        })
+
+        $(".search_click-down").click(function () {
+            $(".search_show-links > ul").toggleClass("d-none");
+            $(".search_clicked-style").toggleClass("click-down_clicked");
+            $("#search-arrow-up").toggleClass("d-none");
+            $("#search-arrow-down").toggleClass("d-none");
         })
 
         $(".show_user-links").click(function () {

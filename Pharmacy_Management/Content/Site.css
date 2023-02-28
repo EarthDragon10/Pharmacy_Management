@@ -136,6 +136,11 @@ textarea {
     cursor: pointer;
 }
 
+.search_click-down {
+    /*padding: 10px 30px;*/
+    cursor: pointer;
+}
+
 /*.click-down:hover {
         background-color: #009099;
     }*/
@@ -149,6 +154,10 @@ textarea {
 }
 
 .inventory_show-links {
+    padding: 5px 30px;
+}
+
+.search_show-links {
     padding: 5px 30px;
 }
 
@@ -229,6 +238,10 @@ textarea {
 
 .user-link {
     padding: 7px 17px;
+}
+
+.inventory_click-down {
+    cursor: pointer;
 }
 
 /* MAIN CONTENT */

@@ -208,6 +208,7 @@
     <Content Include="Content\Assets\Img\Icons\inventory_groupMedicine.png" />
     <Content Include="Content\Assets\Img\Icons\logout.png" />
     <Content Include="Content\Assets\Img\Icons\Reports.png" />
+    <Content Include="Content\Assets\Img\Icons\search.png" />
     <Content Include="Content\Assets\Img\Icons\sfondo1.jpg" />
     <Content Include="Content\Assets\Img\Icons\sfondo2.jpg" />
     <Content Include="Content\Assets\Img\Icons\total_payements.png" />
@@ -365,13 +366,15 @@
     <Content Include="Views\Inventary\EditGroupMedicine.cshtml" />
     <Content Include="Views\Inventary\DeleteGroupMedicine.cshtml" />
     <Content Include="Views\Orders\CreatePescrition.cshtml" />
+    <Content Include="Views\ResultSearch\Index.cshtml" />
+    <Content Include="Views\ResultSearch\SearchByDate.cshtml" />
+    <Content Include="Views\ResultSearch\SearchByCodFisc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Assets\Img\Customers\" />
     <Folder Include="Content\Assets\Img\Medicines\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\ResultSearch\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

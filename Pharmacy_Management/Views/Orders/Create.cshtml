@@ -12,39 +12,45 @@
 
         <h1><span class="text-grey">Ordini > Seleziona Cliente > Scegli Il Prodotto</span> > Crea Oordine </h1>
         <p class="mt-4">Seleziona le quantitá dei prodotti da te scelti ed esegui l'ordine</p>
-<div class="d-flex flex-wrap gap-4 justify-content-around align-content-around">
+        <div class="d-flex flex-wrap gap-4 justify-content-around align-content-around">
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
 
-    @foreach (var item in Pharmacy_Management.Models.Orders.PreOrder.PreOrderList)
-    {
-        <div class="card mt-4" style="width: 18rem;">
-            <img src="~/Content/Assets/Img/Medicines/@item.UrlImg" class="card-img-top" alt="image of product">
-            <div class="card-body">
-                <h5 class="card-title">@item.NameProduct</h5>
-                <p class="card-text">Tipo prodotto: @item.TypeProduct @item.TypeMedicine</p>
-                <p class="card-text">Prezzo: @item.Price</p>
-                <p>Descrizione: @item.DescriptionUse</p>
-                <p>Seleziona la quantitá desiderata:</p>
-                <select name="QntyAddedToCart" class="form-control btn-primary numMedicineSelected">
-                    <option selected value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+            @foreach (var item in Pharmacy_Management.Models.Orders.PreOrder.PreOrderList)
+            {
+                <div class="card mt-4" style="width: 18rem;">
+                    <img src="~/Content/Assets/Img/Medicines/@item.UrlImg" class="card-img-top" alt="image of product">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.NameProduct</h5>
+                        <p class="card-text">Tipo prodotto: @item.TypeProduct @item.TypeMedicine</p>
+                        <p class="card-text">Prezzo: @item.Price</p>
+                        <p>Descrizione: @item.DescriptionUse</p>
+                        <p>Seleziona la quantitá desiderata:</p>
+                        <select name="QntyAddedToCart" data-price="@item.Price" class="form-control btn-primary numMedicineSelected">
+                            <option selected value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+            }
+
+            <div class="card border-light yellow-border mb-3" style="max-width: 18rem;max-height:9rem;">
+                <div class="card-header fw-bold bg-yellow">Totale Carrello</div>
+                <div class="card-body">
+                    <p class="card-header" id="show-total">0 €</p>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Effettua Ordine" class="btn btn-success" />
+                    </div>
+                </div>
             </div>
-        </div>
-    }
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Effettua Ordine" class="btn btn-success" />
+            
         </div>
-    </div>
-</div>
 }
 
     <div>
@@ -52,6 +58,23 @@
     </div>
 </div>
 
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        console.log($(".numMedicineSelected").find(":selected").val());
+        var totalPriceMedicinal = 0;
+
+        $(".numMedicineSelected").change(function () {
+            var selectedOption = parseFloat($(this).find(":selected").val());
+            var priceSelected = parseFloat($(this).data("price"));
+            totalPriceMedicinal += selectedOption * priceSelected;
+            $("#show-total").empty();
+            $("#show-total").append(totalPriceMedicinal + "€");
+        })
+    })
+
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
