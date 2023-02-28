@@ -5,30 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Admin</span> > Tipologia di Prodotto</h1>
+    <h4>Tipologia di Prodotto</h4>
+    <a href="~/TypeProducts/Index" class="btn btn-success mb-4">+ Nuova Tipologia Prodotto</a>
+    <table class="table tables_pharmacy blue-border">
+        <tr class="bg-blue">
+            <th>
+                @Html.DisplayNameFor(model => model.DescTypeProduct)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DescTypeProduct)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescTypeProduct)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdTypeProduct }, new { @class = "btn btn-warning" }) 
+                    @Html.ActionLink("Dettagli", "Details", new { id = item.IdTypeProduct }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IdTypeProduct }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescTypeProduct)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdTypeProduct }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdTypeProduct }) |
-            @Html.ActionLink("Elimina", "Delete", new { id=item.IdTypeProduct })
-        </td>
-    </tr>
-}
+    </table>
 
-</table>
+</div>

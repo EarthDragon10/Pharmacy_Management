@@ -5,23 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard</span> > Modifica del Cassetti</h1>
+    <h4>Cassetto</h4>
 
-<div>
-    <h4>Drawers</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Identifier)
-        </dt>
+    <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Identifier)
-        </dd>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Numero Cassetto</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.Identifier</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifica", "Edit", new { id = Model.IdDrawer }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary" })
+    </p>
 
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDrawer }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

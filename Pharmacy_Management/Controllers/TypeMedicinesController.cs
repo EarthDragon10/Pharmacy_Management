@@ -46,7 +46,7 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdTypeMedicine,DescTypeMedicine")] TypeMedicine typeMedicine)
+        public ActionResult Create([Bind(Include = "IdTypeMedicine,DescTypeMedicine,RequiredPescrition")] TypeMedicine typeMedicine)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Pharmacy_Management.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdTypeMedicine,DescTypeMedicine")] TypeMedicine typeMedicine)
+        public ActionResult Edit([Bind(Include = "IdTypeMedicine,DescTypeMedicine,RequiredPescrition")] TypeMedicine typeMedicine)
         {
             if (ModelState.IsValid)
             {

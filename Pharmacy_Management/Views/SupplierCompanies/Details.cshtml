@@ -5,47 +5,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard > Ditte Fornitrici</span> > Dettaglio</h1>
+    <h4>Dettagli di Ditta Fornitrice</h4>
+    <div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Info Ditta Fornitrice</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.NameCompany</h5>
+                            <p class="card-text">Nome della Ditta</p>
+                        </div>
+                        <div>
+                            <h5 class="card-title">@Model.Address</h5>
+                            <p class="card-text">Sede</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header text-center">Contatti</h5>
+                    <div class="card-body d-flex justify-content-around text-center">
+                        <div>
+                            <h5 class="card-title">@Model.Mail</h5>
+                            <p class="card-text">E-Mail</p>
+                        </div>
+                        <div>
+                            <h5 class="card-title">@Model.PhoneNumber</h5>
+                            <p class="card-text">Numero Telefonico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="mt-4">
+        @Html.ActionLink("Modifica", "Edit", new { id = Model.IdSupplierCompanies }, new { @class = "btn btn-warning" }) 
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary" })
+    </p>
 
-<div>
-    <h4>SupplierCompanies</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NameCompany)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NameCompany)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mail)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdSupplierCompanies }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

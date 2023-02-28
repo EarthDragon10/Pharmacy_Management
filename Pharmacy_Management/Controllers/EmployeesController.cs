@@ -68,7 +68,7 @@ namespace Pharmacy_Management.Controllers
                     return View();
                 }
             }
-            ViewBag.IdRole = new SelectList(DbContext.Roles, "IdRole", "TypeRole", employee.IdRole);
+            ViewBag.IdRole = new SelectList(db.Roles, "IdRole", "TypeRole", employee.IdRole);
             return View(employee);
             //if (ModelState.IsValid)
             //{

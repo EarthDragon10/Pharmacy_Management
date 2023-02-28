@@ -4,49 +4,53 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="vh-100 px-3 py-5">
+    <h1><span class="text-grey">Dashboard</span> > Ditte Fornitrici</h1>
+    <h4>Liste di Ditte Fornitrici</h4>
+    <a href="~/SupplierCompanies/Create" class="btn btn-success mb-4">+ Nuova Ditta Fornitrice</a>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table tables_pharmacy blue-border">
+        <tr class="bg-blue">
+            <th>
+                @Html.DisplayNameFor(model => model.NameCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th></th>
+        </tr>
 
-<h2>Index</h2>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdSupplierCompanies }, new { @class = "btn btn-warning" }) 
+                    @Html.ActionLink("Dettaglio", "Details", new { id = item.IdSupplierCompanies }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IdSupplierCompanies }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NameCompany)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mail)
-        </th>
-        <th></th>
-    </tr>
+    </table>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameCompany)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdSupplierCompanies }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdSupplierCompanies }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdSupplierCompanies })
-        </td>
-    </tr>
-}
-
-</table>
