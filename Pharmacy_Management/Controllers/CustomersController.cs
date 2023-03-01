@@ -115,6 +115,19 @@ namespace Pharmacy_Management.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Customers customers = db.Customers.Find(id);
+
+            var orders = db.Orders.Where( o => o.IdCustomer == id).ToList();
+            foreach (var item in orders)
+            {
+                db.Orders.Remove(item);
+            }
+
+            var prescritions = db.Pescritions.Where(p => p.IdCustomer == id).ToList();
+            foreach(var item in prescritions)
+            {
+                db.Pescritions.Remove(item);
+            }
+
             db.Customers.Remove(customers);
             db.SaveChanges();
             return RedirectToAction("Index");

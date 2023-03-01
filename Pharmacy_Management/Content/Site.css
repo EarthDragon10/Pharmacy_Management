@@ -70,6 +70,9 @@ textarea {
 .login-spacing {
     height: 100vh;
     padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-style {
@@ -80,7 +83,8 @@ textarea {
     align-content: center;
     border-radius: 4px 4px;
     background-color: #E6EBF7;
-    height: 92vh;
+    height: 52vh;
+    width: 50vw;
 }
 /* SIDEBAR */
 
@@ -418,4 +422,10 @@ textarea {
 
 .range_px {
     width: 30px !important;
+}
+
+/* Employees */
+
+.img-employee {
+    width: 130px;
 }

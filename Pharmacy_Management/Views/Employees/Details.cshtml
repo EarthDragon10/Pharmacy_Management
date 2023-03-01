@@ -16,7 +16,7 @@
                     <h5 class="card-header text-center">Info Dipendente</h5>
                     <div class="card-body d-flex justify-content-around text-center">
                         <div>
-                            <img src="~/Content/Assets/Img/Employees/@Model.UrlImg" alt="Alternate Text" />
+                            <img src="~/Content/Assets/Img/Employees/@Model.UrlImg" class="img-employee" alt="Alternate Text" />
                         </div>
                         <div>
                             <h5 class="card-title">@Model.FirstName @Model.LastName</h5>
@@ -47,9 +47,9 @@
             </div>
         </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdEmployee }, new { @class = "btn btn-warning"})
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary"})
+    <p class="mt-4">
+        @Html.ActionLink("Modifica", "Edit", new { id = Model.IdEmployee }, new { @class = "btn btn-warning me-3"})
+        @Html.ActionLink("Torna Indietro", "Index", null, new { @class = "btn btn-primary"})
     </p>
 </div>
 
