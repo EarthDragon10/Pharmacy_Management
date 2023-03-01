@@ -11,6 +11,7 @@ using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
 {
+    [Authorize]
     public class InventaryController : Controller
     {
         private ModelDbContext db = new ModelDbContext();

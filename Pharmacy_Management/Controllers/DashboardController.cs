@@ -12,6 +12,7 @@ using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         private ModelDbContext DbContext = new ModelDbContext();

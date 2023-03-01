@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Pharmacy_Management.Controllers
 {
+    [Authorize]
     public class ResultSearchController : Controller
     {
         private ModelDbContext DbContext = new ModelDbContext();

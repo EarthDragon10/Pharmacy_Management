@@ -55,6 +55,5 @@ namespace Pharmacy_Management.Models
             public static List<PreOrder> PreOrderList = new List<PreOrder>();
         }
 
-        //public static List<Medicines> ListMedicineCart = new List<Medicines>();
     }
 }

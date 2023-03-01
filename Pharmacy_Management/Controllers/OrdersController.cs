@@ -10,6 +10,7 @@ using Pharmacy_Management.Models;
 
 namespace Pharmacy_Management.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
